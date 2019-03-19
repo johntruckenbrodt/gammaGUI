@@ -32,7 +32,7 @@ class FileQuery(Frame):
             self.filename = askopenfilename(parent=self, initialdir=Environment.workdir.get(), title="browse file")
             self.ent.insert(0, self.filename)
         elif self.option == 2:
-            self.dirname = askdirectory(parent=self, initialdir=Environment.workdir.get(), title="browse folder")
+            self.dirname = askdirectory(parent=self, initialdir=Environment.workdir.get(), title="browse folder")#.encode("utf-8").replace('/','\\')
             if self.dirname:
                 self.file.set(self.dirname)
         elif self.option == 3:

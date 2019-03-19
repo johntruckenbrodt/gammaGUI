@@ -38,6 +38,8 @@ class Main(Frame):
         # raw data import
         args_import = [["general data import", sys.executable, "reader.py"], ["import directory"], ["sensor", "deramp (S1 SLC only)", "mosaic (S1 SLC only)"], ["All", True, True]]
         args_ers = [["ers data import", sys.executable, "reader_ers.py"], ["import directory"], ["orbit correction"], [True]]
+        # Stefan
+        args_zip = [["Unzipping", sys.executable,"extract_zip.py"], ["import directory"],[],[]]
         # #######################################################################################################
         # ISP
         # multilooking
@@ -131,6 +133,8 @@ class Main(Frame):
         menubar.add_cascade(label="IMP", menu=impMenu)
         impMenu.add_command(label="General Data Import", command=lambda: self.callChild(args_import))
         impMenu.add_command(label="ERS Data Import", command=lambda: self.callChild(args_ers))
+        # Stefan
+        impMenu.add_command(label="Unzipping", command=lambda: self.callChild(args_zip))
         # #######################################################################################################
         # IMP
         ispMenu = Menu(fileMenu, Environment.menu_ops)
@@ -233,7 +237,14 @@ class Main(Frame):
         if len(Environment.workdir.get()) == 0:
             tkMessageBox.showerror("Directory Missing", "please define working directory")
         else:
+            print arguments
             Dialog(arguments)
+            # Stefan
+            #Dialog(arguments.encode("uft-8"))
+            a = Environment.workdir.get()
+            print a
+            print type(a)
+            print Environment.__dict__
 # #######################################################################################################
 # INITIALIZE GUI
 if __name__ == "__main__":
