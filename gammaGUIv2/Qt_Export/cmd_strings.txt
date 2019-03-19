@@ -1,0 +1,6 @@
+C:\Users\Stefan\Python37\python C:\Users\Stefan\Python37\Scripts\pyuic5.exe -x D:\gammaGUIv2\gammaGUIv2\Qt_Export\QMainWindow.ui -o D:\gammaGUIv2\gammaGUIv2\Qt_Export\QMainWindow.py
+C:\Users\Stefan\Python37\python C:\Users\Stefan\Python37\Scripts\pyuic5.exe -x D:\gammaGUIv2\gammaGUIv2\Qt_Export\QSubWindow_default.ui -o D:\gammaGUIv2\gammaGUIv2\Qt_Export\QSubWindow_default.py
+C:\Users\Stefan\Python37\python C:\Users\Stefan\Python37\Scripts\pyuic5.exe -x D:\gammaGUIv2\gammaGUIv2\Qt_Export\QSubWindow_set_your_working_directory.ui -o D:\gammaGUIv2\gammaGUIv2\Qt_Export\QSubWindow_set_your_working_directory.py
+C:\Users\Stefan\Python37\python C:\Users\Stefan\Python37\Scripts\pyuic5.exe -x D:\gammaGUIv2\gammaGUIv2\Qt_Export\QSubWindow_data_extraction.ui -o D:\gammaGUIv2\gammaGUIv2\Qt_Export\QSubWindow_data_extraction.py
+C:\Users\Stefan\Python37\python C:\Users\Stefan\Python37\Scripts\pyuic5.exe -x D:\gammaGUIv2\gammaGUIv2\Qt_Export\QSubWindow_S1_TOPS.ui -o D:\gammaGUIv2\gammaGUIv2\Qt_Export\QSubWindow_S1_TOPS.py
+C:\Users\Stefan\Python37\python C:\Users\Stefan\Python37\Scripts\pyuic5.exe -x D:\gammaGUIv2\gammaGUIv2\Qt_Export\

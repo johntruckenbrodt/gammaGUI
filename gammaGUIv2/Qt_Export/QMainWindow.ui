@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>720</width>
+    <height>536</height>
+   </rect>
+  </property>
+  <property name="focusPolicy">
+   <enum>Qt::NoFocus</enum>
+  </property>
+  <property name="windowTitle">
+   <string>Gamma GUI v2</string>
+  </property>
+  <property name="Backgroundimage" stdset="0">
+   <pixmap>../../../gammaGUI/gammaGUI/background.jpg</pixmap>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>720</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuImport">
+    <property name="title">
+     <string>Import</string>
+    </property>
+    <widget class="QMenu" name="menuGeneral_Data_Import">
+     <property name="title">
+      <string>General Data Import</string>
+     </property>
+     <widget class="QMenu" name="menuSentinel1">
+      <property name="title">
+       <string>Sentinel1</string>
+      </property>
+      <addaction name="actionS1_TOPS"/>
+      <addaction name="actionS1_GRD"/>
+     </widget>
+     <addaction name="menuSentinel1"/>
+     <addaction name="actionERS"/>
+     <addaction name="actionTDX"/>
+     <addaction name="actionTSX"/>
+     <addaction name="actionCSK"/>
+     <addaction name="actionRS"/>
+     <addaction name="actionRS2"/>
+     <addaction name="actionPSR2"/>
+     <addaction name="separator"/>
+     <addaction name="actionSentinel2"/>
+     <addaction name="actionLandsat7"/>
+     <addaction name="actionLandsat8"/>
+    </widget>
+    <addaction name="actionSet_Working_Dir"/>
+    <addaction name="actionData_Extraction"/>
+    <addaction name="separator"/>
+    <addaction name="menuGeneral_Data_Import"/>
+   </widget>
+   <widget class="QMenu" name="menuAUX">
+    <property name="title">
+     <string>AUX</string>
+    </property>
+    <addaction name="actionExport_Import"/>
+    <addaction name="actionLayer_Stacking"/>
+    <addaction name="separator"/>
+    <addaction name="actionPlotting"/>
+   </widget>
+   <widget class="QMenu" name="menuGAMMA">
+    <property name="title">
+     <string>GAMMA</string>
+    </property>
+    <widget class="QMenu" name="menuISP_2">
+     <property name="title">
+      <string>ISP</string>
+     </property>
+     <addaction name="actionSLC_Multilooking_2"/>
+     <addaction name="actionMultilooking_2"/>
+     <addaction name="actionInterferogram_Generation_2"/>
+     <addaction name="actionBaseline_Estimation_2"/>
+     <addaction name="actionInterferogram_Flattening_2"/>
+     <addaction name="actionCoherence_Estimation_2"/>
+    </widget>
+    <widget class="QMenu" name="menuGEO">
+     <property name="title">
+      <string>GEO</string>
+     </property>
+     <addaction name="actionSRTM_preperation_2"/>
+     <addaction name="actionDEM_preperation_2"/>
+     <addaction name="actionGeocoding_2"/>
+    </widget>
+    <widget class="QMenu" name="menuLAT_2">
+     <property name="title">
+      <string>LAT</string>
+     </property>
+     <addaction name="actionPolarimetry_2"/>
+     <addaction name="actionFiltering_2"/>
+    </widget>
+    <widget class="QMenu" name="menuDISP_2">
+     <property name="title">
+      <string>DISP</string>
+     </property>
+     <addaction name="actionMultilook_2"/>
+     <addaction name="actionSingle_Look_Complex_2"/>
+     <addaction name="actionCoherence_2"/>
+     <addaction name="actionInterferogram_2"/>
+     <addaction name="actionPhase_2"/>
+     <addaction name="actionHeight_Images_2"/>
+    </widget>
+    <addaction name="menuISP_2"/>
+    <addaction name="menuGEO"/>
+    <addaction name="menuLAT_2"/>
+    <addaction name="menuDISP_2"/>
+   </widget>
+   <widget class="QMenu" name="menuSNAP">
+    <property name="title">
+     <string>SNAP</string>
+    </property>
+   </widget>
+   <addaction name="menuImport"/>
+   <addaction name="menuGAMMA"/>
+   <addaction name="menuSNAP"/>
+   <addaction name="menuAUX"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionData_Extraction">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Data Extraction</string>
+   </property>
+  </action>
+  <action name="actionSLC_Multilooking">
+   <property name="text">
+    <string>SLC Multilooking</string>
+   </property>
+  </action>
+  <action name="actionMultilooking">
+   <property name="text">
+    <string>Multilooking</string>
+   </property>
+  </action>
+  <action name="actionInterferogram_Generation">
+   <property name="text">
+    <string>Interferogram Generation</string>
+   </property>
+  </action>
+  <action name="actionBaseline_Estimation">
+   <property name="text">
+    <string>Baseline Estimation</string>
+   </property>
+  </action>
+  <action name="actionInterferogram_Flattening">
+   <property name="text">
+    <string>Interferogram Flattening</string>
+   </property>
+  </action>
+  <action name="actionCoherence_Estimation">
+   <property name="text">
+    <string>Coherence Estimation</string>
+   </property>
+  </action>
+  <action name="actionSRTM_preperation">
+   <property name="text">
+    <string>SRTM preperation</string>
+   </property>
+  </action>
+  <action name="actionDEM_preperation">
+   <property name="text">
+    <string>DEM preperation</string>
+   </property>
+  </action>
+  <action name="actionGeocoding">
+   <property name="text">
+    <string>Geocoding</string>
+   </property>
+  </action>
+  <action name="actionPolarimetry">
+   <property name="text">
+    <string>Polarimetry</string>
+   </property>
+  </action>
+  <action name="actionFiltering">
+   <property name="text">
+    <string>Filtering</string>
+   </property>
+  </action>
+  <action name="actionMultilook">
+   <property name="text">
+    <string>Multilook</string>
+   </property>
+  </action>
+  <action name="actionSingle_Look_Complex">
+   <property name="text">
+    <string>Single Look Complex</string>
+   </property>
+  </action>
+  <action name="actionCoherence">
+   <property name="text">
+    <string>Coherence</string>
+   </property>
+  </action>
+  <action name="actionInterferogram">
+   <property name="text">
+    <string>Interferogram</string>
+   </property>
+  </action>
+  <action name="actionPhase">
+   <property name="text">
+    <string>Phase</string>
+   </property>
+  </action>
+  <action name="actionHeight_Images">
+   <property name="text">
+    <string>Height Images</string>
+   </property>
+  </action>
+  <action name="actionExport_Import">
+   <property name="text">
+    <string>Export/Import</string>
+   </property>
+  </action>
+  <action name="actionLayer_Stacking">
+   <property name="text">
+    <string>Layer Stacking</string>
+   </property>
+  </action>
+  <action name="actionSentinel_1_TOPS">
+   <property name="text">
+    <string>Sentinel 1 TOPS</string>
+   </property>
+  </action>
+  <action name="actionERS">
+   <property name="text">
+    <string>ERS</string>
+   </property>
+  </action>
+  <action name="actionTDX">
+   <property name="text">
+    <string>TDX</string>
+   </property>
+  </action>
+  <action name="actionTSX">
+   <property name="text">
+    <string>TSX</string>
+   </property>
+  </action>
+  <action name="actionSet_Working_Dir">
+   <property name="text">
+    <string>Set Working Directory</string>
+   </property>
+  </action>
+  <action name="actionCSK">
+   <property name="text">
+    <string>CSK</string>
+   </property>
+  </action>
+  <action name="actionRS">
+   <property name="text">
+    <string>RS2</string>
+   </property>
+  </action>
+  <action name="actionRS2">
+   <property name="text">
+    <string>PSR1</string>
+   </property>
+  </action>
+  <action name="actionPSR2">
+   <property name="text">
+    <string>PSR2</string>
+   </property>
+  </action>
+  <action name="actionSentinel2">
+   <property name="text">
+    <string>Sentinel2</string>
+   </property>
+  </action>
+  <action name="actionLandsat7">
+   <property name="text">
+    <string>Landsat7</string>
+   </property>
+  </action>
+  <action name="actionLandsat8">
+   <property name="text">
+    <string>Landsat8</string>
+   </property>
+  </action>
+  <action name="actionSLC_Multilooking_2">
+   <property name="text">
+    <string>SLC Multilooking</string>
+   </property>
+  </action>
+  <action name="actionMultilooking_2">
+   <property name="text">
+    <string>Multilooking</string>
+   </property>
+  </action>
+  <action name="actionInterferogram_Generation_2">
+   <property name="text">
+    <string>Interferogram Generation</string>
+   </property>
+  </action>
+  <action name="actionBaseline_Estimation_2">
+   <property name="text">
+    <string>Baseline Estimation</string>
+   </property>
+  </action>
+  <action name="actionInterferogram_Flattening_2">
+   <property name="text">
+    <string>Interferogram Flattening</string>
+   </property>
+  </action>
+  <action name="actionCoherence_Estimation_2">
+   <property name="text">
+    <string>Coherence Estimation</string>
+   </property>
+  </action>
+  <action name="actionSRTM_preperation_2">
+   <property name="text">
+    <string>SRTM preperation</string>
+   </property>
+  </action>
+  <action name="actionDEM_preperation_2">
+   <property name="text">
+    <string>DEM preperation</string>
+   </property>
+  </action>
+  <action name="actionGeocoding_2">
+   <property name="text">
+    <string>Geocoding</string>
+   </property>
+  </action>
+  <action name="actionPolarimetry_2">
+   <property name="text">
+    <string>Polarimetry</string>
+   </property>
+  </action>
+  <action name="actionFiltering_2">
+   <property name="text">
+    <string>Filtering</string>
+   </property>
+  </action>
+  <action name="actionMultilook_2">
+   <property name="text">
+    <string>Multilook</string>
+   </property>
+  </action>
+  <action name="actionSingle_Look_Complex_2">
+   <property name="text">
+    <string>Single Look Complex</string>
+   </property>
+  </action>
+  <action name="actionCoherence_2">
+   <property name="text">
+    <string>Coherence</string>
+   </property>
+  </action>
+  <action name="actionInterferogram_2">
+   <property name="text">
+    <string>Interferogram</string>
+   </property>
+  </action>
+  <action name="actionPhase_2">
+   <property name="text">
+    <string>Phase</string>
+   </property>
+  </action>
+  <action name="actionHeight_Images_2">
+   <property name="text">
+    <string>Height Images</string>
+   </property>
+  </action>
+  <action name="actionPlotting">
+   <property name="text">
+    <string>Plotting</string>
+   </property>
+  </action>
+  <action name="actionS1_TOPS">
+   <property name="text">
+    <string>S1 TOPS</string>
+   </property>
+  </action>
+  <action name="actionS1_GRD">
+   <property name="text">
+    <string>S1 GRD</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
