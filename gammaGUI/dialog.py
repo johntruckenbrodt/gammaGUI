@@ -70,6 +70,7 @@ class Dialog(Toplevel):
         else:
             self.ents = makeform(self, args[-2], args[-1])
 
+
         # set window appearance
         self.geometry("600x" + str(self.ydim))
         Frame(self, bg="white", height=2).pack({"fill": "x"})
