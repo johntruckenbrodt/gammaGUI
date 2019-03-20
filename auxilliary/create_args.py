@@ -70,35 +70,49 @@ class Args:
 
         :return:
         """
-
-        # TODO MAKE IT PRETTY
         # TODO HANDLE "missing" args or different Default Values
+
+        # Create List for all the Arguments
         args = self.args
+
+        # Make Instance of WorkENV.xml and read it
         my_dir = ReadEnv()
         WorkEnv = my_dir.read_env()
 
+        # Make Instance of XMLCreaterGAMMA and Read the par_S1_SLC Command
         gamma = XMLCreaterGAMMA()
         gamma_com = gamma.read_XMLGAMMA("par_S1_SLC")
-        print(gamma_com)
-        #my_gamma_com =
+        #print(gamma_com)
 
-
-        print("------- Print Work ENV ------")
-        print(WorkEnv)
-        print("------- Reading S1_TOPS Data *.SAFE FORMAT --------")
+        # print("------- Print Work ENV ------")
+        # print(WorkEnv)
+        print("------- Creating necessary Variables --------")
+        # Create Import Dir
         idir = WorkEnv[1]
-        print(idir)
+        #print(idir)
+
+        # Create Output Dir -> I Think not necessary in this Case ... Gamma Processing
         odir = WorkEnv[3]
-        print(odir)
+        #print(odir)
+
+        # Root the WorkENV.xml
         root = ET.parse(WorkEnv[4]).getroot()
         print(root)
+
+        # Define Folder Ending (for Sentinel *.SAFE)
         extension = ".SAFE"
+
+        # Create List for all *.SAFE Folders (TopList of the List in List)
         folders = list()
+
+        # Define Variables Gamma needs -> everything a list (Lists in TopLists)
+
         # GAMMA Input
         GeoTIFF = list()  # includes list of tiffs
         annotation_XML = list()
         calibration_XML = list()
         noise_XML = list()
+
         # Gamma Output
         outname_base = list()
         outname_SLC_par = list()
@@ -107,10 +121,12 @@ class Args:
         dytpe = "0"  # 0 is default(FCOMPLEX), 1 (SCOMPLEX)
         sc_dB = "60.000"  # Scale Factro for FCOMPLEX -> SCOMPLEX, default HH,VV (dB): 60.000 , VH,HV: 70.000
 
-        print("Import dir: " + idir)
-        print("Export dir: " + odir)
-        print("Root:")
-        print(root)
+        # print("Import dir: " + idir)
+        # print("Export dir: " + odir)
+        # print("Root:")
+        # print(root)
+
+        print("------- Reading S1_TOPS Data *.SAFE FORMAT --------")
 
         print("------- Collecting all *SAFE Folders -------")
         # GeoTIFF, annotation_XML, calibration_XML, noise_XML, SLC_par, SLC, TOPS_par, dtype,sc_dB
@@ -241,8 +257,8 @@ class Args:
             # print(self.suboutname_tmp)
             outname_SLC_tops_par.append(suboutname_tmp)
 
-        for i in outname_SLC_par:
-            print(i)
+        # for i in outname_SLC_par:
+        #     print(i)
 
         # print(self.outname_SLC_tops_par)
 
@@ -263,8 +279,11 @@ class Args:
                 #run(["XML_S1_TOPS", self.GeoTIFF[i][j]])
 
 
-        print("This are my ARGS to PASS TO S1_TOPS.py -> Run S1 TOPS")
-        print(args)
+        # print("This are my ARGS to PASS TO S1_TOPS.py -> Run S1 TOPS")
+        # print(args)
+
+        print("------- Returning Collected Arguments to S1_TOPS.py to run par_S1_SLC Gamma Module -------")
+
         return args
 
         #TODO
