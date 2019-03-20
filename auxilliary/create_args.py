@@ -18,9 +18,6 @@ class Args:
         self.args = list()
 
     def create_args_par_S1_SLC(self):
-        #TODO
-        # create_args_{xy} for further Processing Sequence
-        # -> in gamma/gamma_modules/S1_TOPS.py just implement the right order for S1_TOPS data
         """
         This is the Function to Create all needed Arguments in the correct Order for the par_S1_SLC Module.
         Corresponding Window: gammaGUIv2/gui_windows/QSubWindow_S1_TOPS.py where the Input comes from
@@ -270,6 +267,9 @@ class Args:
         print(args)
         return args
 
+        #TODO
+        # create_args_{xy} for further Processing Sequence
+        # -> in gamma/gamma_modules/S1_TOPS.py just implement the right order for S1_TOPS data
 
 if __name__ == '__main__':
     t = Args()
