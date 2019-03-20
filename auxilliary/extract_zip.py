@@ -29,9 +29,13 @@ class ZippedFiles():
         5. backgroundimage
         6. GammaCommands.xml
     """
+    try:
 
-    WorkENV = ReadEnv()
-    my_WorkENV = WorkENV.read_env()
+        WorkENV = ReadEnv()
+        my_WorkENV = WorkENV.read_env()
+
+    except FileNotFoundError:
+        print("The File WorkENV.xml does not exists! Please set Your Working Directory\nImport -> Set Working Directory")
 
     def unzip_files():
         """
