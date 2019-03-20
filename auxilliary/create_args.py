@@ -17,7 +17,7 @@ class Args:
     def __init__(self):
         self.args = list()
 
-    def create_args_S1_TOPS(self):
+    def create_args_par_S1_SLC(self):
         #TODO
         # RENAME S1_TOPS to par_S1_SLC -> and then a create_args_{xy} for further Processing Sequence
         # -> in gamma/gamma_modules/S1_TOPS.py just implement the right order
@@ -274,4 +274,4 @@ class Args:
 if __name__ == '__main__':
     t = Args()
     print(t)
-    t.create_args_S1_TOPS()
+    t.create_args_par_S1_SLC()

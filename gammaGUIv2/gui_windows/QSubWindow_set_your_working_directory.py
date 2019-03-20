@@ -93,12 +93,13 @@ class Ui_QSubWindow_set_your_working_directory(object):
 
         # ButtonBox (Ok and Cancel)
         # TODO Read out line String and Set Wdir in Environment, when press OK
-        # TODO -- DOUBLE TROUBLE --- with browser, see to to there -> rweite to parese to line -> and Set Enviroment with OK
+        # TODO -- DOUBLE TROUBLE --- with browser, see to todo there -> rweite to parese to line -> and Set Enviroment with OK
         self.buttonBox_2 = QtWidgets.QDialogButtonBox(self.horizontalWidget_14)
         self.buttonBox_2.setOrientation(QtCore.Qt.Horizontal)
         self.buttonBox_2.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel | QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox_2.setObjectName("buttonBox_2")
-        #
+
+        # self.buttonBox_2.accepted.connect(self.buttonBox_2.closeEvent)
         # self.buttonBox_2.accepted.connect(self.accept)
         # self.buttonBox_2.rejected.connect(self.reject)
         #  self.accepted.connect(some_function)

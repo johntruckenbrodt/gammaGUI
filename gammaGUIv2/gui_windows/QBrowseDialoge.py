@@ -19,7 +19,13 @@ class BrowseDialoge(QtWidgets.QFileDialog):
         fname = str(fd.getExistingDirectory(parent=None))
         print(fname)
 
-        #TODO rewrite Method to parse it to Line in Window
+        #TODO
+        # Find a Solution to Show fname
+        # in LineEdit of QSubWindow_set_your_working_directory
+        # after that press OK Button to run the Function Enviornment.set_wdir(fname) to Create WorkENV.xml
+        # at the Moment the Solution is:
+        # If you Press the Button in the QBrowseDialog Window the WorkENV.xml is Created,
+        # there is no Functionality on the other Buttons. To Close the Window use X
 
         # Set in Enviroment
         instanz = Environment()

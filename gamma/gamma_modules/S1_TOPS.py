@@ -43,7 +43,7 @@ class S1TOPS():
         print("------- Start Importing to GAMMA ------")
         # Import list of Arguments from ceate_args.py create_args_S1_TOPS
         my_Args = Args()
-        my_args_list = my_Args.create_args_S1_TOPS()
+        my_args_list = my_Args.create_args_par_S1_SLC()
 
         # TODO Find out if we need a parser. Good Idea or Bad Idea ?! Right now we need none
         # # Create Parser
