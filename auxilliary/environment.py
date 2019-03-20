@@ -34,13 +34,13 @@ class Environment:
     #  IDEA: Check if WorkENV.xml exists and set this Values. If not set these.
     #       -> possibly my cause Problems
 
-    wdir = os.getcwd()
+    wdir = os.path.join(os.getcwd())
     idir = "ImportDir"
     odir = "OutputDir"
     tdir = "TempDir"
-    WorkEnv = os.path.join(wdir,"auxilliary","WorkEnv.xml")
-    backgroundImage = os.path.join(os.getcwd(),"gammaGUIv2","gui_images","background.jpg")
-    gammaCommands = os.path.join(wdir,"auxilliary","GammaCommands.xml")
+    WorkEnv = os.path.join(os.getcwd(), "auxilliary", "WorkEnv.xml")
+    backgroundImage = os.path.join(os.getcwd(), "gammaGUIv2", "gui_images", "background.jpg")
+    gammaCommands = os.path.join(os.getcwd(), "auxilliary", "GammaCommands.xml")
 
     def set_wdir(self,wdir):
         """

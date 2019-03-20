@@ -1,9 +1,0 @@
-<?xml version="1.0" ?><root>
-<wdir name="wdir">D:/gammaGUI</wdir>
-<idir name="idir">D:/gammaGUI/data</idir>
-<tdir name="tdir">TempDir</tdir>
-<odir name="odir">D:/gammaGUI/data</odir>
-<WorkEnv name="WorkEnv">D:\gammaGUI\auxilliary\WorkEnv.xml</WorkEnv>
-<backgroundImage name="backgroundImage">D:\gammaGUI\gammaGUIv2\gui_images\background.jpg</backgroundImage>
-<gammaCommands name="gammaCommands">D:\gammaGUI\auxilliary\GammaCommands.xml</gammaCommands>
-</root>

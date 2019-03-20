@@ -16,7 +16,7 @@ class BrowseDialoge(QtWidgets.QFileDialog):
         fd = QtWidgets.QFileDialog()
         print(r"Start Dialog File Search")
         print(fd)
-        fname = str(fd.getExistingDirectory(parent=None)).replace(r'/', r'\\')
+        fname = str(fd.getExistingDirectory(parent=None))
         print(fname)
 
         #TODO rewrite Method to parse it to Line in Window
@@ -40,7 +40,7 @@ class BrowseDialogeInput(QtWidgets.QFileDialog):
         fd = QtWidgets.QFileDialog()
         print(r"Start Dialog File Search")
         print(fd)
-        fname = str(fd.getExistingDirectory(parent=None)).replace(r'/', r'\\')
+        fname = str(fd.getExistingDirectory(parent=None))
         print(fname)
 
         #Set in Enviroment
@@ -61,7 +61,7 @@ class BrowseDialogeTmp(QtWidgets.QFileDialog):
         fd = QtWidgets.QFileDialog()
         print(r"Start Dialog File Search")
         print(fd)
-        fname = str(fd.getExistingDirectory(parent=None)).replace(r'/', r'\\')
+        fname = str(fd.getExistingDirectory(parent=None))
         print(fname)
 
         # Set in Enviroment
@@ -82,7 +82,7 @@ class BrowseDialogeOdir(QtWidgets.QFileDialog):
         fd = QtWidgets.QFileDialog()
         print(r"Start Dialog File Search")
         print(fd)
-        fname = str(fd.getExistingDirectory(parent=None)).replace(r'/', r'\\')
+        fname = str(fd.getExistingDirectory(parent=None))
         print(fname)
 
         # Set in Enviroment

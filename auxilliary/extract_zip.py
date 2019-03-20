@@ -44,14 +44,18 @@ class ZippedFiles():
         TODO further TODO's in gammaGUIv2/gui_windows/QSubWindow_data_extraction.py
         :return:
         """
+        WorkENV = ReadEnv()
+        args = WorkENV.read_env()
+        print(args)
+
         # Create Instance of ZippedFiles
-        args = ZippedFiles()
+        #args = ZippedFiles()
 
         # Get idir
-        idir = args.my_WorkENV[1]
+        idir = args[1]
         print("The Import Directory is:" + idir)
 
-        odir = args.my_WorkENV[3]
+        odir = args[3]
         print("The Output Directory is:" + odir)
 
         # TODO
