@@ -19,8 +19,8 @@ class Args:
 
     def create_args_par_S1_SLC(self):
         #TODO
-        # RENAME S1_TOPS to par_S1_SLC -> and then a create_args_{xy} for further Processing Sequence
-        # -> in gamma/gamma_modules/S1_TOPS.py just implement the right order
+        # create_args_{xy} for further Processing Sequence
+        # -> in gamma/gamma_modules/S1_TOPS.py just implement the right order for S1_TOPS data
         """
         This is the Function to Create all needed Arguments in the correct Order for the par_S1_SLC Module.
         Corresponding Window: gammaGUIv2/gui_windows/QSubWindow_S1_TOPS.py where the Input comes from
