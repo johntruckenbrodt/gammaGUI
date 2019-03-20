@@ -257,18 +257,18 @@ class Args:
             # print(self.suboutname_tmp)
             outname_SLC_tops_par.append(suboutname_tmp)
 
-        # for i in outname_SLC_par:
-        #     print(i)
+        for i in outname_SLC_par:
+            print(i)
 
         # print(self.outname_SLC_tops_par)
 
 
         for i in range(len(GeoTIFF)):
             for j in range(len(GeoTIFF[i])):
-                print((" ".join([gamma_com, GeoTIFF[i][j], annotation_XML[i][j],
-                                calibration_XML[i][j], noise_XML[i][j],
-                                outname_SLC_par[i][j], outname_SLC[i][j],
-                                outname_SLC_tops_par[i][j], dytpe, sc_dB])))
+                # print((" ".join([gamma_com, GeoTIFF[i][j], annotation_XML[i][j],
+                #                 calibration_XML[i][j], noise_XML[i][j],
+                #                 outname_SLC_par[i][j], outname_SLC[i][j],
+                #                 outname_SLC_tops_par[i][j], dytpe, sc_dB])))
                 tmp_args = (" ".join([gamma_com, GeoTIFF[i][j], annotation_XML[i][j],
                                 calibration_XML[i][j], noise_XML[i][j],
                                 outname_SLC_par[i][j], outname_SLC[i][j],
