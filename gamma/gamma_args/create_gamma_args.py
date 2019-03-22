@@ -17,7 +17,7 @@ class GammaArgs:
     def __init__(self):
         self.args = list()
 
-    def create_args_par_S1_SLC(self):
+    def create_args_par_S1_tops(self):
         """
         This is the Function to Create all needed Arguments in the correct Order for the par_S1_SLC Module.
         Corresponding Window: gammaGUIv2/gui_windows/QSubWindow_S1_TOPS.py where the Input comes from
