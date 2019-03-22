@@ -39,8 +39,7 @@ class S1TOPS():
         :return:
         """
 
-        print("------- Start Printing Arguments for GAMMA -------")
-        print("------- Start Importing to GAMMA ------")
+        print("------- Start Importing S1_TOPS data to GAMMA ------")
         # Import list of Arguments from ceate_args.py create_args_S1_TOPS
         my_Args = Args()
         my_args_list = my_Args.create_args_par_S1_SLC()
@@ -65,16 +64,27 @@ class S1TOPS():
 
         #sp.CREATE_NEW_CONSOLE
 
-        for i in range(0, len(my_args_list)):
-            my_args = my_args_list[i].split()
+        print("------- Run Arguments for par_S1_SLC Gamma Command ------")
+
+        for i in range(0, len(my_args_list[0])):
+            my_args = my_args_list[0][i] #.split() vllt nötig (has to be tested in the Server)
+            print(my_args)
             #sp.run(parser.parse_args(my_args))
             sp.Popen(my_args, shell=True)
 
-        print("------- ALL DATA IMPORTET ------")
+        print("------- Create Folders (Basename) and copy specific slc Files tops. par ------")
+        # TODO "Clean Up" Create Folders und copy Specific Files there
+
+        for i in range(0, len(my_args_list[1])):
+            my_args = my_args_list[1][i] #.split() vllt nötig (has to be tested in the Server)
+            print(my_args)
+            #sp.run(parser.parse_args(my_args))
+            sp.Popen(my_args, shell=True)
 
         print("------- CREATE XML FILE FOR *.slc.par and *.tops.par ------")
 
         #TODO Implement XML Creater
+        #TODO slc_mosaic_S1_TOPS -> in new Folder
         #TODO Rewrite Script to Object
         #TODO WRITE FUNCTION TO READ XML FILE AND READ ML FACKTOR AND SO ON
         #TODO THNIK OF FURTHER PROCESSING

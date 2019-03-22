@@ -71,7 +71,9 @@ class Args:
         :return:
         """
         # TODO HANDLE "missing" args or different Default Values
-
+        # TODO par_S1_SLC $(find . -iname s1a-iw1-slc-vh-20170731t163004-20170731t163029-017717-01dac5-001.tiff) $(find . -iname s1a-iw1-slc-vh-20170731t163004-20170731t163029-017717-01dac5-001.xml) $(find . -iname calibration-s1a-iw1-slc-vh-20170731t163004-20170731t163029-017717-01dac5-001.xml) $(find . -iname noise-s1a-iw1-slc-vh-20170731t163004-20170731t163029-017717-01dac5-001.xml) S1A_IW_20170731T163002_A_iw1_vh.slc.par S1A_IW_20170731T163002_A_iw1_vh.slc S1A_IW_20170731T163002_A_iw1_vh.tops_par 0 60.000
+        # TODO mkdir S1A_IW_20170731T163002_A && mv S1A_IW_20170731T163002_A_iw1_vh.slc.par "$_" && mv S1A_IW_20170731T163002_A_iw1_vh.slc "$_" && mv S1A_IW_20170731T163002_A_iw1_vh.tops_par "$_"
+        # HIer sollten 6 Daten nach mkdir stehen
         # Create List for all the Arguments
         args = self.args
 
@@ -139,7 +141,9 @@ class Args:
         for i in folders:
             subfoldtmp = list()
             for j in os.listdir(os.path.join(idir, i, "measurement")):
+                #subfoldtmp.append("".join(["$(find .iname ", j, ")"]))
                 subfoldtmp.append(j)
+                #subfoldtmp.append(os.path.join(i, "measurement", j))
             GeoTIFF.append(subfoldtmp)
         for i in GeoTIFF:
             print(i)
@@ -149,6 +153,7 @@ class Args:
             subfoldtmp = list()
             for j in os.listdir(os.path.join(idir, i, "annotation")):
                 if j.endswith(".xml"):
+                    #subfoldtmp.append(os.path.join(i, "annotation", j))
                     subfoldtmp.append(j)
             annotation_XML.append(subfoldtmp)
         for i in annotation_XML:
@@ -159,7 +164,9 @@ class Args:
             subfoldtmp = list()
             for j in os.listdir(os.path.join(idir, i, "annotation", "calibration")):
                 if j.startswith("calibration"):
+                    #subfoldtmp.append(os.path.join(i, "calibration", j))
                     subfoldtmp.append(j)
+                    calibration_XML.append(subfoldtmp)
             calibration_XML.append(subfoldtmp)
         for i in calibration_XML:
             print(i)
@@ -169,7 +176,9 @@ class Args:
             subfoldtmp = list()
             for j in os.listdir(os.path.join(idir, i, "annotation", "calibration")):
                 if j.startswith("noise"):
-                    subfoldtmp.append(j)
+                    #subfoldtmp.append(os.path.join(i, "annotation", "calibration", j))
+                    #subfoldtmp.append(j) #WARNING: noise level values file: NESZ value(s) above -20 dB found (inf dB),WARNING: noise level values will not be used
+                    subfoldtmp.append("-")
             noise_XML.append(subfoldtmp)
         for i in noise_XML:
             print(i)
@@ -193,6 +202,35 @@ class Args:
 
         print("------- Creating Names for SLC_par Outputfiles -------")
 
+        # for i in folders:
+        #     subfoldtmp = list()
+        #     for j in os.listdir(os.path.join(idir, i, "measurement")):
+        #         subfoldtmp.append(j)
+        #     GeoTIFF_names.append(subfoldtmp)
+        # # for i in GeoTIFF_names:
+        # #     print(i)
+
+        # Pattern for _iw1_vv.slc.par
+        # pattern = r"^(?P<sat>s1[ab]\-(?P<beam>iw1|iw2|iw3)\-(?P<prod>slc)\-(?P<pols>vv|vh)*)"
+        # #pattern = r"^(?P<path>S1[AB])[0-9A-Za-z\_\\\.]+"
+        # print(pattern)
+        # for i in range(len(GeoTIFF_names)):
+        #     suboutname_tmp = list()
+        #     for j in range(len(GeoTIFF_names[i])):
+        #         match = re.match(pattern, GeoTIFF_names[i][j])
+        #         #print(match)
+        #         self.outname_tmp = "_".join(
+        #             [match.group("beam"),match.group("pols"),".SLC.par"]).replace("D","")
+        #         # self.outname_tmp = "_".join([match.group("beam")])
+        #         #self.outname_tmp = match
+        #         #print(self.outname_tmp)
+        #         suboutname_tmp.append(("_".join(
+        #             [outname_base[i], match.group("beam"), match.group("pols"), ".slc.par"]).replace("D",
+        #                                                                                                   "")).replace(
+        #             "_.slc", ".slc"))
+        #     # print(self.suboutname_tmp)
+        #     outname_SLC_par.append(suboutname_tmp)
+
         # Pattern for _iw1_vv.slc.par
         pattern = r"^(?P<sat>s1[ab]\-(?P<beam>iw1|iw2|iw3)\-(?P<prod>slc)\-(?P<pols>vv|vh)*)"
         # print(pattern)
@@ -206,7 +244,7 @@ class Args:
                 # print(self.outname_tmp)
                 suboutname_tmp.append(("_".join(
                     [outname_base[i], match.group("beam"), match.group("pols"), ".slc.par"]).replace("D",
-                                                                                                          "")).replace(
+                                                                                                     "")).replace(
                     "_.slc", ".slc"))
             # print(self.suboutname_tmp)
             outname_SLC_par.append(suboutname_tmp)
@@ -262,29 +300,73 @@ class Args:
 
         # print(self.outname_SLC_tops_par)
 
+        # "".join(["$(find .iname ", j, ")"])
 
         for i in range(len(GeoTIFF)):
             for j in range(len(GeoTIFF[i])):
-                # print((" ".join([gamma_com, GeoTIFF[i][j], annotation_XML[i][j],
+                print((" ".join([gamma_com, "".join(["$(find . -iname ", GeoTIFF[i][j], ")"]),
+                                 "".join(["$(find . -iname ", annotation_XML[i][j], ")"]),
+                                 "".join(["$(find . -iname ", calibration_XML[i][j], ")"]),
+                                # "".join(["$(find . -iname ", noise_XML[i][j], ")"]),
+                                 noise_XML[i][j],
+                                 outname_SLC_par[i][j], outname_SLC[i][j],
+                                 outname_SLC_tops_par[i][j], dytpe, sc_dB])))
+                # tmp_args = (" ".join([gamma_com, GeoTIFF[i][j], annotation_XML[i][j],
                 #                 calibration_XML[i][j], noise_XML[i][j],
                 #                 outname_SLC_par[i][j], outname_SLC[i][j],
-                #                 outname_SLC_tops_par[i][j], dytpe, sc_dB])))
-                tmp_args = (" ".join([gamma_com, GeoTIFF[i][j], annotation_XML[i][j],
-                                calibration_XML[i][j], noise_XML[i][j],
+                #                 outname_SLC_tops_par[i][j], dytpe, sc_dB])) # Potentielly add str(sys.executable), str(sys.argv[0]), at the beginning
+                tmp_args = (" ".join([gamma_com, "".join(["$(find . -iname ", GeoTIFF[i][j], ")"]),
+                                 "".join(["$(find . -iname ", annotation_XML[i][j], ")"]),
+                                 "".join(["$(find . -iname ", calibration_XML[i][j], ")"]),
+                                 #"".join(["$(find . -iname ", noise_XML[i][j], ")"]),
+                                 noise_XML[i][j],
                                 outname_SLC_par[i][j], outname_SLC[i][j],
-                                outname_SLC_tops_par[i][j], dytpe, sc_dB])) # Potentielly add str(sys.executable), str(sys.argv[0]), at the beginning
+                                outname_SLC_tops_par[i][j], dytpe, sc_dB]))
 
                 args.append(tmp_args)
                 #print("XML_S1_TOPS" +" "+ self.GeoTIFF[i][j] +" "+ self.annotation_XML[i][j] )
                 #run(["XML_S1_TOPS", self.GeoTIFF[i][j]])
 
 
-        # print("This are my ARGS to PASS TO S1_TOPS.py -> Run S1 TOPS")
-        # print(args)
+        print("This are my ARGS to PASS TO S1_TOPS.py -> Run S1 TOPS")
+        print(args)
+
+        print("------- Creating Arguments to copy produced SLC Files to its own folder")
+
+        #mkdir S1A_IW_20170731T163002_A && mv S1A_IW_20170731T163002_A_iw1_vh.slc.par "$_" && mv S1A_IW_20170731T163002_A_iw1_vh.slc"$_" && mv S1A_IW_20170731T163002_A_iw1_vh.tops_par"$_"
+        # mkdir basename && mv outname_SLC_par "$_" && outname_SLC "$_" && outname_SLC_par "$_" (für alle iw + vv,vh)
+
+        # Create list for Copy Args
+        copy_args = list()
+
+        for i in range(len(outname_base)):
+            print("Hallo")
+            print((" ".join(["mkdir", outname_base[i],
+                             " ".join(["&& mv", outname_SLC_par[i][0],'"$_"'])," ".join(["&& mv", outname_SLC[i][0], '"$_"']), " ".join(["&& mv", outname_SLC_tops_par[i][0], '"$_"']),
+                             " ".join(["&& mv", outname_SLC_par[i][1], '"$_"'])," ".join(["&& mv", outname_SLC[i][1], '"$_"'])," ".join(["&& mv", outname_SLC_tops_par[i][1], '"$_"']),
+                             " ".join(["&& mv", outname_SLC_par[i][2], '"$_"'])," ".join(["&& mv", outname_SLC[i][2], '"$_"'])," ".join(["&& mv", outname_SLC_tops_par[i][2], '"$_"']),
+                             " ".join(["&& mv", outname_SLC_par[i][3], '"$_"'])," ".join(["&& mv", outname_SLC[i][3], '"$_"'])," ".join(["&& mv", outname_SLC_tops_par[i][3], '"$_"']),
+                             " ".join(["&& mv", outname_SLC_par[i][4], '"$_"'])," ".join(["&& mv", outname_SLC[i][4], '"$_"'])," ".join(["&& mv", outname_SLC_tops_par[i][4], '"$_"']),
+                             " ".join(["&& mv", outname_SLC_par[i][5], '"$_"'])," ".join(["&& mv", outname_SLC[i][5], '"$_"'])," ".join(["&& mv", outname_SLC_tops_par[i][5], '"$_"'])])))
+            copy_args_tmp = (" ".join(["mkdir", outname_base[i], # TODO Find out behaviour on Server possibly Change Linux Syntax
+                             " ".join(["&& mv", outname_SLC_par[i][0],'"$_"'])," ".join(["&& mv", outname_SLC[i][0], '"$_"']), " ".join(["&& mv", outname_SLC_tops_par[i][0], '"$_"']),
+                             " ".join(["&& mv", outname_SLC_par[i][1], '"$_"'])," ".join(["&& mv", outname_SLC[i][1], '"$_"'])," ".join(["&& mv", outname_SLC_tops_par[i][1], '"$_"']),
+                             " ".join(["&& mv", outname_SLC_par[i][2], '"$_"'])," ".join(["&& mv", outname_SLC[i][2], '"$_"'])," ".join(["&& mv", outname_SLC_tops_par[i][2], '"$_"']),
+                             " ".join(["&& mv", outname_SLC_par[i][3], '"$_"'])," ".join(["&& mv", outname_SLC[i][3], '"$_"'])," ".join(["&& mv", outname_SLC_tops_par[i][3], '"$_"']),
+                             " ".join(["&& mv", outname_SLC_par[i][4], '"$_"'])," ".join(["&& mv", outname_SLC[i][4], '"$_"'])," ".join(["&& mv", outname_SLC_tops_par[i][4], '"$_"']),
+                             " ".join(["&& mv", outname_SLC_par[i][5], '"$_"'])," ".join(["&& mv", outname_SLC[i][5], '"$_"'])," ".join(["&& mv", outname_SLC_tops_par[i][5], '"$_"'])]))
+            copy_args.append(copy_args_tmp)
+
+        print("Print jetzt die Argzmente zum in der Liste Kopieren der SLO Daten")
+        for i in copy_args:
+            print(i)
+
+        my_tuple = tuple((args, copy_args))
 
         print("------- Returning Collected Arguments to S1_TOPS.py to run par_S1_SLC Gamma Module -------")
 
-        return args
+        #return args,copy_args
+        return my_tuple
 
         #TODO
         # create_args_{xy} for further Processing Sequence

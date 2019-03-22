@@ -110,8 +110,7 @@ if __name__ == '__main__':
     # TODO FINA ALL NECESSARY GAMMA-COMMENTS
     myList = list(["par_S1_SLC",
                    "par_S1_GRD",
-                   "SLC_Burst_Corners",
-                   "par_S1_GRD"])
+                   "SLC_Burst_Corners"])
     print(myList)
     # RUN HERE
     #xml.create_XMLGAMMA(xml, r"D:\gammaGUIv2\auxilliary", r"GammaCommands", myList)
