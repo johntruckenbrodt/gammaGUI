@@ -5,7 +5,7 @@ import re
 from auxilliary.xml_creator import XMLCreaterGAMMA
 import sys
 
-class Args:
+class GammaArgs:
     """
     This is the Class for all Arguments which are passed to the GammaSoftware. The Script where the Commands are passed
     is e.g. gamma/gamma_modules/S1_TOPS.py

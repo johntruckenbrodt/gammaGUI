@@ -2,14 +2,15 @@
 # Inheriate readers from gammaGUI
 # Adjust these ?!
 
-import os
-from auxilliary.read_env import ReadEnv
-import xml.etree.cElementTree as ET
-import re
-from auxilliary.read_env import ReadEnv
-from auxilliary.create_args import Args
-import argparse
-import sys
+# import os
+# from auxilliary.read_env import ReadEnv
+# import xml.etree.cElementTree as ET
+# import re
+# from auxilliary.read_env import ReadEnv
+# from auxilliary.create_args import Args
+from gamma.gamma_args.create_gamma_args import GammaArgs
+# import argparse
+# import sys
 import subprocess as sp
 
 
@@ -21,7 +22,7 @@ import subprocess as sp
 
 
 
-class S1TOPS():
+class ParS1Tops():
     """
     This Class Contains a method to handle the Given Arguments
     from D:\gammaGUIv2\auxilliary\create_args.py  -> Args.create_args_S1_TOPS()
@@ -32,7 +33,7 @@ class S1TOPS():
     #     self.WorkEnv = ""
 
 
-    def run_S1_TOPS():
+    def run_par_S1_tops():
         """
         This is the Function to execute the received List of Lists from Args.create_args_S1_TOPS() on the shell
         Therefore subprocess.Popen(args,shell = T) is used
@@ -41,7 +42,7 @@ class S1TOPS():
 
         print("------- Start Importing S1_TOPS data to GAMMA ------")
         # Import list of Arguments from ceate_args.py create_args_S1_TOPS
-        my_Args = Args()
+        my_Args = GammaArgs()
         my_args_list = my_Args.create_args_par_S1_SLC()
 
         # TODO Find out if we need a parser. Good Idea or Bad Idea ?! Right now we need none

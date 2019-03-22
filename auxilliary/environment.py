@@ -40,7 +40,7 @@ class Environment:
     tdir = "TempDir"
     WorkEnv = os.path.join(os.getcwd(), "auxilliary", "WorkEnv.xml")
     backgroundImage = os.path.join(os.getcwd(), "gammaGUIv2", "gui_images", "background.jpg")
-    gammaCommands = os.path.join(os.getcwd(), "auxilliary", "GammaCommands.xml")
+    gammaCommands = os.path.join(os.getcwd(), "gamma", "GammaCommands.xml")
 
     def set_wdir(self,wdir):
         """

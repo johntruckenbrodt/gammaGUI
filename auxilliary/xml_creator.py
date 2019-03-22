@@ -113,7 +113,7 @@ if __name__ == '__main__':
                    "SLC_Burst_Corners"])
     print(myList)
     # RUN HERE
-    #xml.create_XMLGAMMA(xml, r"D:\gammaGUIv2\auxilliary", r"GammaCommands", myList)
+    xml.create_XMLGAMMA(xml, r"D:\gammaGUI\gamma", r"GammaCommands", myList)
     # OR RUN HERE
     #xml.read_XMLGAMMA("par_S1_SLC")
 
