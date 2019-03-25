@@ -265,7 +265,6 @@ class Ui_QSubWindow_data_extraction(object):
         QSubWindow_data_extraction.exec_()
 
 
-
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)

@@ -9,7 +9,8 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from auxilliary.environment import Environment
 from gammaGUIv2.gui_windows.QBrowseDialoge import BrowseDialoge
-
+def say_hello():
+    print("Button clicked, Hello!")
 
 class Ui_QSubWindow_set_your_working_directory(object):
     """
@@ -62,7 +63,7 @@ class Ui_QSubWindow_set_your_working_directory(object):
         -> eg. BrowseButton: Open File Dialoge Window -> Browse to Folder -> Pass this to enviroment.Enviroment as WDIR
         -> read our Lineinput: -> Pass this to environment.Environment as WDIR
         -> ButtonBOX:
-            - OK -> Pass Browsed Direktory to environment.ENvironment
+            - OK -> Pass Browsed Direktory to environment.Environment
             - Cancel -> Quit this Window
 
         Example of Implementation:
@@ -81,7 +82,7 @@ class Ui_QSubWindow_set_your_working_directory(object):
         # Browse Button
         self.pushButton_3 = QtWidgets.QPushButton(self.horizontalWidget_9)
         self.pushButton_3.setObjectName("pushButton_3")
-        self.pushButton_3.clicked.connect(BrowseDialoge.browse_function)
+        self.pushButton_3.clicked.connect(say_hello())
 
         self.horizontalLayout_9.addWidget(self.pushButton_3)
         self.horizontalWidget_14 = QtWidgets.QWidget(self.horizontalWidget_9)
@@ -98,6 +99,10 @@ class Ui_QSubWindow_set_your_working_directory(object):
         self.buttonBox_2.setOrientation(QtCore.Qt.Horizontal)
         self.buttonBox_2.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel | QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox_2.setObjectName("buttonBox_2")
+
+        #self.buttonBox_2.button(QtWidgets.QDialogButtonBox.Cancel).clicked.connect(set_wdir())
+        #self.buttonBox_2.button(QtGui.QDialogButtonBox.Ok).clicked.connect(self.set_wdir())
+
 
         # self.buttonBox_2.accepted.connect(self.buttonBox_2.closeEvent)
         # self.buttonBox_2.accepted.connect(self.accept)
@@ -135,6 +140,9 @@ class Ui_QSubWindow_set_your_working_directory(object):
         ui.setupUi(QSubWindow_set_your_working_directory)
         QSubWindow_set_your_working_directory.exec_()
 
+
+    def set_wdir(self):
+        print("HAHA")
 
 if __name__ == "__main__":
     import sys
