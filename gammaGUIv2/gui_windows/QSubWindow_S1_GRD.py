@@ -144,8 +144,8 @@ class Ui_QSubWindow_S1_GRD(object):
         self.buttonBox_2.setOrientation(QtCore.Qt.Horizontal)
         self.buttonBox_2.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox_2.setObjectName("buttonBox_2")
-        #
-        self.buttonBox_2.accepted.connect(ParS1Tops.run_par_S1_GRD)
+        # START Process
+        self.buttonBox_2.accepted.connect(ParS1Tops.run_par_S1_grd)
 
         self.horizontalLayout_14.addWidget(self.buttonBox_2)
 
