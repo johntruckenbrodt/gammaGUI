@@ -1,21 +1,22 @@
-# -*- coding: utf-8 -*-
+from PyQt5.QtCore import QSize, QRect
+from PyQt5.QtGui import QImage, QPalette, QBrush
+from PyQt5.QtWidgets import QWidget
+import sys
 
-# Form implementation generated from reading ui file 'D:\gammaGUIv2\gammaGUIv2\Qt_Export\QSubWindow_set_your_working_directory.ui'
-#
-# Created by: PyQt5 UI code generator 5.11.3
-#
-# WARNING! All changes made in this file will be lost!
+class Set_Working_Dir_Window(QWidget):
 
-from PyQt5 import QtCore, QtGui, QtWidgets
-from auxilliary.environment import Environment
-from gammaGUIv2.gui_windows.QBrowseDialoge import BrowseDialoge
-def say_hello():
-    print("Button clicked, Hello!")
+    def __init__(self):
 
-class Ui_QSubWindow_set_your_working_directory(object):
-    """
-        This is the Class of the Set Your Workin Directory Window
-    """
+        # uebernimmt alle Funktionen von internen QWidget
+        # Gehört generell immer dazu
+        super().__init__()
+
+        # Hier: rufe die Methode initUI auf
+        # Diese erstellt alle Elemente auf der QWidget Oberfläche
+        self.initUI()
+
+    def initUI(self):
+
 
     def setupUi(self, QSubWindow_set_your_working_directory):
         """
@@ -69,7 +70,7 @@ class Ui_QSubWindow_set_your_working_directory(object):
         Example of Implementation:
         self.pushButton_3.setObjectName("pushButton_3")
         self.pushButton_3.clicked.connect(BrowseDialoge.browse_function)
-        
+
         """
 
         # Input Line Dialog
@@ -100,9 +101,8 @@ class Ui_QSubWindow_set_your_working_directory(object):
         self.buttonBox_2.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel | QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox_2.setObjectName("buttonBox_2")
 
-        #self.buttonBox_2.button(QtWidgets.QDialogButtonBox.Cancel).clicked.connect(set_wdir())
-        #self.buttonBox_2.button(QtGui.QDialogButtonBox.Ok).clicked.connect(self.set_wdir())
-
+        # self.buttonBox_2.button(QtWidgets.QDialogButtonBox.Cancel).clicked.connect(set_wdir())
+        # self.buttonBox_2.button(QtGui.QDialogButtonBox.Ok).clicked.connect(self.set_wdir())
 
         # self.buttonBox_2.accepted.connect(self.buttonBox_2.closeEvent)
         # self.buttonBox_2.accepted.connect(self.accept)
@@ -140,9 +140,9 @@ class Ui_QSubWindow_set_your_working_directory(object):
         ui.setupUi(QSubWindow_set_your_working_directory)
         QSubWindow_set_your_working_directory.exec_()
 
-
     def set_wdir(self):
         print("HAHA")
+
 
 if __name__ == "__main__":
     import sys
@@ -153,4 +153,3 @@ if __name__ == "__main__":
     ui.setupUi(QSubWindow_set_your_working_directory)
     QSubWindow_set_your_working_directory.show()
     sys.exit(app.exec_())
-
