@@ -700,6 +700,8 @@ class GammaArgs:
         # Create list for Copy Args
         copy_args = list()
 
+        #TODO: COPY ORDNER Funktioniert noch nicht
+        # Zuhause testen
         for i in range(len(outname_base)):
             print("Hallo")
             print((" ".join(["mkdir", outname_base[i],
@@ -754,8 +756,8 @@ class GammaArgs:
         # print(WorkEnv)
         print("------- Creating necessary Variables --------")
         # Create Import Dir
-        # idir = WorkEnv[1]
-        idir = "C:/Users/kbehr/Desktop/Gamma/Test"
+        idir = WorkEnv[1]
+        # idir = "C:/Users/kbehr/Desktop/Gamma/Test"
         print(idir)
 
         # Create Output Dir -> I Think not necessary in this Case ... Gamma Processing
@@ -937,7 +939,7 @@ class GammaArgs:
                              " ".join(["&& mv", outname_MLI_par[i][2], '"$_"'])," ".join(["&& mv", outname_MLI[i][2], '"$_"']),
                              " ".join(["&& mv", outname_MLI_par[i][3], '"$_"'])," ".join(["&& mv", outname_MLI[i][3], '"$_"']),
                              " ".join(["&& mv", outname_MLI_par[i][4], '"$_"'])," ".join(["&& mv", outname_MLI[i][4], '"$_"']),
-                             " ".join(["&& mv", outname_MLI_par[i][5], '"$_"'])," ".join(["&& mv", outname_MLI[i][5], '"$_"']))))
+                             " ".join(["&& mv", outname_MLI_par[i][5], '"$_"'])," ".join(["&& mv", outname_MLI[i][5], '"$_"'])])))
 
             copy_args_tmp = (" ".join(["mkdir", outname_base[i], # TODO Find out behaviour on Server possibly Change Linux Syntax
                              " ".join(["&& mv", outname_MLI_par[i][0],'"$_"'])," ".join(["&& mv", outname_MLI[i][0], '"$_"']),
@@ -945,22 +947,19 @@ class GammaArgs:
                              " ".join(["&& mv", outname_MLI_par[i][2], '"$_"'])," ".join(["&& mv", outname_MLI[i][2], '"$_"']),
                              " ".join(["&& mv", outname_MLI_par[i][3], '"$_"'])," ".join(["&& mv", outname_MLI[i][3], '"$_"']),
                              " ".join(["&& mv", outname_MLI_par[i][4], '"$_"'])," ".join(["&& mv", outname_MLI[i][4], '"$_"']),
-                             " ".join(["&& mv", outname_MLI_par[i][5], '"$_"'])," ".join(["&& mv", outname_MLI[i][5], '"$_"']))))
+                             " ".join(["&& mv", outname_MLI_par[i][5], '"$_"'])," ".join(["&& mv", outname_MLI[i][5], '"$_"'])]))
             copy_args.append(copy_args_tmp)
 
         print("Print jetzt die Argzmente zum in der Liste Kopieren der SLO Daten")
         for i in copy_args:
             print(i)
 
-        print("This are my ARGS to PASS TO S1_TOPS.py -> Run S1 TOPS")
-        print(args)
-
-        print("------- Creating Arguments to copy produced SLC Files to its own folder")
 
 
 
-        #my_tuple = tuple((args, copy_args))
 
+        my_tuple = tuple((args, copy_args))
+        print(my_tuple)
         print("------- Returning Collected Arguments to S1_TOPS.py to run par_S1_SLC Gamma Module -------")
 
         # return args,copy_args

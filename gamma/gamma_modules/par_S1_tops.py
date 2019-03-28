@@ -97,26 +97,6 @@ class ParS1Tops():
         my_Args = GammaArgs()
         my_args_list = my_Args.create_args_par_S1_GRD()
 
-        # TODO Find out if we need a parser. Good Idea or Bad Idea ?! Right now we need none
-        # # Create Parser
-        # parser = argparse.ArgumentParser(description="Import S1_TOPS to GAMMA Format")
-        # # parser.add_argument('--sys.executable', help='sys.executable help')
-        # # parser.add_argument('--sys.argv', help='sys.executable help')
-        # parser.add_argument('--S1_TOPS', help='sys.executable help')
-        # parser.add_argument('--GammaModule', help='GammaModule help')
-        # parser.add_argument('--GeoTIFF', help='GeoTIFF help')
-        # parser.add_argument('--annotationXML', help='annotationXML help')
-        # parser.add_argument('--calibrationXML', help='calibrationXML help')
-        # parser.add_argument('--noiseXML', help='noiseXML help')
-        # parser.add_argument('--SLC_Par', help='SLC_Par help')
-        # parser.add_argument('--SLC', help='SLC help')
-        # parser.add_argument('--TOPS_par', help='TOPS_par help')
-        # parser.add_argument('--dtype', help='dtype help')
-        # parser.add_argument('--sc_dB', help='dtype help')
-        # print(parser)
-
-        #sp.CREATE_NEW_CONSOLE
-        """"
         print("------- Run Arguments for par_S1_SLC Gamma Command ------")
 
         for i in range(0, len(my_args_list[0])):
@@ -125,23 +105,12 @@ class ParS1Tops():
             #sp.run(parser.parse_args(my_args))
             sp.Popen(my_args, shell=True)
 
-        print("------- Create Folders (Basename) and copy specific slc Files tops. par ------")
-        # TODO "Clean Up" Create Folders und copy Specific Files there
-
         for i in range(0, len(my_args_list[1])):
             my_args = my_args_list[1][i] #.split() vllt nötig (has to be tested in the Server)
             print(my_args)
             #sp.run(parser.parse_args(my_args))
             sp.Popen(my_args, shell=True)
 
-        print("------- CREATE XML FILE FOR *.slc.par and *.tops.par ------")
-        #TODO Implement XML Creater
-        #TODO slc_mosaic_S1_TOPS -> in new Folder
-        #TODO Rewrite Script to Object
-        #TODO WRITE FUNCTION TO READ XML FILE AND READ ML FACKTOR AND SO ON
-        #TODO THNIK OF FURTHER PROCESSING
-        #     - automated or "clicky" or both (Check Button ?!)
-        """
 
 if __name__ == '__main__':
     #TODO Clean up make it runing from Main (if possible)
@@ -150,12 +119,5 @@ if __name__ == '__main__':
     readed.run_S1_TOPS
     print(readed.run_S1_TOPS)
 
-
-
-    # my_ENV = ReadEnv()
-    # Work_ENV = my_ENV.read_env()
-    # readed = S1_TOPS(Work_ENV)
-    # readed.module_S1_TOPS(Work_ENV)
-    # #readed.module_S1_TOPS(readed)
 
     print(readed)
