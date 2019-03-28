@@ -131,7 +131,7 @@ class GammaArgs:
         print("------- Reading S1_TOPS Data *.SAFE FORMAT --------")
 
         print("------- Collecting all *SAFE Folders -------")
-        # GeoTIFF, annotation_XML, calibration_XML, noise_XML, SLC_par, SLC, TOPS_par, dtype,sc_dB
+        # GeoTIFF, annotation_XML, calibration_XML, noise_XML, SLC_par, SLC, TOPS_par, dtype, sc_dB
         for i in os.listdir(idir):  # loop through items in dir
             if i.endswith(extension):  # check for ".zip" extension
                 folders.append(i)
