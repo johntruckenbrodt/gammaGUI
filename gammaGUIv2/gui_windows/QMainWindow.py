@@ -5,7 +5,7 @@ from auxilliary.environment import Environment
 from gammaGUIv2.gui_windows.QSubWindow_set_your_working_directory import Ui_QSubWindow_set_your_working_directory
 from gammaGUIv2.gui_windows.QSubWindow_data_extraction import Ui_QSubWindow_data_extraction
 from gammaGUIv2.gui_windows.QSubWindow_S1_TOPS import Ui_QSubWindow_S1_TOPS
-from gammaGUIv2.gui_windows.QSubWindow_default import Ui_QSubWindow_default
+from gammaGUIv2.gui_windows.QSubWindow_S1_GRD import Ui_QSubWindow_S1_GRD
 
 class Ui_MainWindow(object):
     """
@@ -219,7 +219,7 @@ class Ui_MainWindow(object):
 
         # Set Action to S1_GRD
         self.menuSentinel1.addAction(self.actionS1_GRD)
-        self.actionS1_GRD.triggered.connect(Ui_QSubWindow_default.create_Ui_QSubWindow_default)
+        self.actionS1_GRD.triggered.connect(Ui_QSubWindow_S1_GRD.create_Ui_QSubWindow_S1_GRD)
 
         self.menuGeneral_Data_Import.addAction(self.menuSentinel1.menuAction())
         self.menuGeneral_Data_Import.addAction(self.actionERS)

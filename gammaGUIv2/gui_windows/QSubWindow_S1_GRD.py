@@ -101,7 +101,7 @@ class Ui_QSubWindow_S1_GRD(object):
         self.pushButton_3 = QtWidgets.QPushButton(self.horizontalWidget_9)
         self.pushButton_3.setObjectName("pushButton_3")
         # call BrowseDialog Input Window
-        self.pushButton_3.clicked.connect(self.test)#BrowseDialogeInput.browse_function
+        self.pushButton_3.clicked.connect(BrowseDialogeInput.browse_function)
 
         self.horizontalLayout_9.addWidget(self.pushButton_3)
         spacerItem9 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -144,7 +144,8 @@ class Ui_QSubWindow_S1_GRD(object):
         self.buttonBox_2.setOrientation(QtCore.Qt.Horizontal)
         self.buttonBox_2.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox_2.setObjectName("buttonBox_2")
-        self.buttonBox_2.accepted.connect(ParS1Tops.run_par_S1_tops)
+        #
+        self.buttonBox_2.accepted.connect(ParS1Tops.run_par_S1_GRD)
 
         self.horizontalLayout_14.addWidget(self.buttonBox_2)
 

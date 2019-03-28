@@ -31,7 +31,11 @@ class ParS1Tops():
 
     # def __init__(self):
     #     self.WorkEnv = ""
-
+    def run_par_S1_GRD():
+        print("------- Start Importing S1_TOPS data to GAMMA ------")
+        # Import list of Arguments from ceate_args.py create_args_S1_TOPS
+        my_Args = GammaArgs()
+        my_args_list = my_Args.create_args_par_S1_grd()
 
     def run_par_S1_tops():
         """
