@@ -22,7 +22,7 @@ import subprocess as sp
 
 
 
-class ParS1Tops():
+class ParS1SLC():
     """
     This Class Contains a method to handle the Given Arguments
     from D:\gammaGUIv2\auxilliary\create_args.py  -> Args.create_args_S1_TOPS()
@@ -33,7 +33,7 @@ class ParS1Tops():
     #     self.WorkEnv = ""
 
 
-    def run_par_S1_tops():
+    def run_par_S1_SLC():
         """
         This is the Function to execute the received List of Lists from Args.create_args_S1_TOPS() on the shell
         Therefore subprocess.Popen(args,shell = T) is used
@@ -43,7 +43,7 @@ class ParS1Tops():
         print("------- Start Importing S1_TOPS data to GAMMA ------")
         # Import list of Arguments from ceate_args.py create_args_S1_TOPS
         my_Args = GammaArgs()
-        my_args_list = my_Args.create_args_par_S1_tops()
+        my_args_list = my_Args.create_args_par_S1_SLC()
 
         # TODO Find out if we need a parser. Good Idea or Bad Idea ?! Right now we need none
         # # Create Parser

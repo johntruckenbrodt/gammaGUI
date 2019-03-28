@@ -9,7 +9,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from gammaGUIv2.gui_windows.QBrowseDialoge import *
 #from gamma.gamma_modules.S1_TOPS import S1TOPS
-from gamma.gamma_modules.par_S1_tops import ParS1Tops
+from gamma.gamma_modules.par_S1_SLC import ParS1SLC
 
 class Ui_QSubWindow_S1_GRD(object):
     """
@@ -144,7 +144,7 @@ class Ui_QSubWindow_S1_GRD(object):
         self.buttonBox_2.setOrientation(QtCore.Qt.Horizontal)
         self.buttonBox_2.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox_2.setObjectName("buttonBox_2")
-        self.buttonBox_2.accepted.connect(ParS1Tops.run_par_S1_tops)
+        self.buttonBox_2.accepted.connect(ParS1SLC.run_par_S1_SLC)
 
         self.horizontalLayout_14.addWidget(self.buttonBox_2)
 
