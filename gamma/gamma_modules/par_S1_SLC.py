@@ -22,7 +22,7 @@ import subprocess as sp
 
 
 
-class ParS1Tops():
+class ParS1SLC():
     """
     This Class Contains a method to handle the Given Arguments
     from D:\gammaGUIv2\auxilliary\create_args.py  -> Args.create_args_S1_TOPS()
@@ -32,7 +32,8 @@ class ParS1Tops():
     # def __init__(self):
     #     self.WorkEnv = ""
 
-    def run_par_S1_tops():
+
+    def run_par_S1_SLC():
         """
         This is the Function to execute the received List of Lists from Args.create_args_S1_TOPS() on the shell
         Therefore subprocess.Popen(args,shell = T) is used
@@ -42,7 +43,7 @@ class ParS1Tops():
         print("------- Start Importing S1_TOPS data to GAMMA ------")
         # Import list of Arguments from ceate_args.py create_args_S1_TOPS
         my_Args = GammaArgs()
-        my_args_list = my_Args.create_args_par_S1_tops()
+        my_args_list = my_Args.create_args_par_S1_SLC()
 
         # TODO Find out if we need a parser. Good Idea or Bad Idea ?! Right now we need none
         # # Create Parser
@@ -83,34 +84,12 @@ class ParS1Tops():
 
         print("------- CREATE XML FILE FOR *.slc.par and *.tops.par ------")
 
-    # function to get all
-    # send them to Linux Bash cmd
-    def run_par_S1_grd():
-        """
-        This is the Function to execute the received List of Lists from Args.create_args_S1_TOPS() on the shell
-        Therefore subprocess.Popen(args,shell = T) is used
-        :return:
-        """
-
-        print("------- Start Importing S1_TOPS data to GAMMA ------")
-        # Import list of Arguments from ceate_args.py create_args_S1_TOPS
-        my_Args = GammaArgs()
-        my_args_list = my_Args.create_args_par_S1_GRD()
-
-        print("------- Run Arguments for par_S1_SLC Gamma Command ------")
-
-        for i in range(0, len(my_args_list[0])):
-            my_args = my_args_list[0][i] #.split() vllt nötig (has to be tested in the Server)
-            print(my_args)
-            #sp.run(parser.parse_args(my_args))
-            sp.Popen(my_args, shell=True)
-
-        for i in range(0, len(my_args_list[1])):
-            my_args = my_args_list[1][i] #.split() vllt nötig (has to be tested in the Server)
-            print(my_args)
-            #sp.run(parser.parse_args(my_args))
-            sp.Popen(my_args, shell=True)
-
+        #TODO Implement XML Creater
+        #TODO slc_mosaic_S1_TOPS -> in new Folder
+        #TODO Rewrite Script to Object
+        #TODO WRITE FUNCTION TO READ XML FILE AND READ ML FACKTOR AND SO ON
+        #TODO THNIK OF FURTHER PROCESSING
+        #     - automated or "clicky" or both (Check Button ?!)
 
 if __name__ == '__main__':
     #TODO Clean up make it runing from Main (if possible)
@@ -119,5 +98,12 @@ if __name__ == '__main__':
     readed.run_S1_TOPS
     print(readed.run_S1_TOPS)
 
+
+
+    # my_ENV = ReadEnv()
+    # Work_ENV = my_ENV.read_env()
+    # readed = S1_TOPS(Work_ENV)
+    # readed.module_S1_TOPS(Work_ENV)
+    # #readed.module_S1_TOPS(readed)
 
     print(readed)

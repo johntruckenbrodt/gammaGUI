@@ -9,7 +9,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from gammaGUIv2.gui_windows.QBrowseDialoge import *
 #from gamma.gamma_modules.S1_TOPS import S1TOPS
-from gamma.gamma_modules.par_S1_tops import ParS1Tops
+from gamma.gamma_modules.par_S1_SLC import ParS1SLC
 
 class Ui_QSubWindow_S1_GRD(object):
     """
@@ -101,7 +101,7 @@ class Ui_QSubWindow_S1_GRD(object):
         self.pushButton_3 = QtWidgets.QPushButton(self.horizontalWidget_9)
         self.pushButton_3.setObjectName("pushButton_3")
         # call BrowseDialog Input Window
-        self.pushButton_3.clicked.connect(BrowseDialogeInput.browse_function)
+        self.pushButton_3.clicked.connect(self.test)#BrowseDialogeInput.browse_function
 
         self.horizontalLayout_9.addWidget(self.pushButton_3)
         spacerItem9 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -144,8 +144,7 @@ class Ui_QSubWindow_S1_GRD(object):
         self.buttonBox_2.setOrientation(QtCore.Qt.Horizontal)
         self.buttonBox_2.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox_2.setObjectName("buttonBox_2")
-        # START Process
-        self.buttonBox_2.accepted.connect(ParS1Tops.run_par_S1_grd)
+        self.buttonBox_2.accepted.connect(ParS1SLC.run_par_S1_SLC)
 
         self.horizontalLayout_14.addWidget(self.buttonBox_2)
 
