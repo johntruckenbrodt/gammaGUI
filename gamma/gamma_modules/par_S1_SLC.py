@@ -68,6 +68,7 @@ class ParS1SLC():
         # Implement further Gamma Functions
         # Write and Implement Funcktion to Read the par.xml Data e.g. extract multilooking factors
         # Think about the further Processing, fully automated or "clicky" or both (Combine with Check Buttons?!)
+        # Write and implement a Class and Method to Import a DEM
 
 if __name__ == '__main__':
     #TODO Clean up make it runing from Main (if possible)
