@@ -2,16 +2,20 @@ from PyQt5 import QtWidgets
 from auxilliary.environment import Environment
 
 class BrowseDialoge(QtWidgets.QFileDialog):
+    """
+    This is the Class for the Browse Dialog.
+    It should contain all Methods to open a FileDialoge to extract Folder path or Filepath
+    Currently it contains only Methods to extract a Folder Path
+    """
 
     def __init__(self):
         super(BrowseDialoge).__init__(self)
 
     def browse_function(self):
         """
-        Create Browser Window
-        - Create Entry in Environment for Wdir
-
-        :return: String of browsed path
+        This Methods open the FileDialog and writes the selected Folder Path to a Function Variable and uses the
+        Environment.set_wdir() to create the wdir Entry in the WorkENV.xml
+        :return:
         """
         fd = QtWidgets.QFileDialog()
         print(r"Start Dialog File Search")
@@ -38,10 +42,9 @@ class BrowseDialogeInput(QtWidgets.QFileDialog):
 
     def browse_function(self):
         """
-        Create Browser Window
-        - Create Entry in Environment for Idir
-
-        :return: String of browsed path
+        This Methods open the FileDialog and writes the selected Folder Path to a Function Variable and uses the
+        Environment.set_idir() to create the idir Entry in the WorkENV.xml
+        :return:
         """
         fd = QtWidgets.QFileDialog()
         print(r"Start Dialog File Search")
@@ -52,6 +55,7 @@ class BrowseDialogeInput(QtWidgets.QFileDialog):
         #Set in Enviroment
         instanz = Environment()
         Environment.idir = instanz.set_idir(fname)
+
 class BrowseDialogeTmp(QtWidgets.QFileDialog):
 
     def __int__(self):
@@ -59,10 +63,9 @@ class BrowseDialogeTmp(QtWidgets.QFileDialog):
 
     def browse_function(self):
         """
-        Create Browser Window
-        - Create Entry in Environment for tdir
-
-        :return: String of browsed path
+        This Methods open the FileDialog and writes the selected Folder Path to a Function Variable and uses the
+        Environment.set_tdir() to create the tdir Entry in the WorkENV.xml
+        :return:
         """
         fd = QtWidgets.QFileDialog()
         print(r"Start Dialog File Search")
@@ -73,6 +76,7 @@ class BrowseDialogeTmp(QtWidgets.QFileDialog):
         # Set in Enviroment
         instanz = Environment()
         Environment.tdir = instanz.set_tdir(fname)
+
 class BrowseDialogeOdir(QtWidgets.QFileDialog):
 
     def __int__(self):
@@ -80,10 +84,9 @@ class BrowseDialogeOdir(QtWidgets.QFileDialog):
 
     def browse_function(self):
         """
-        Create Browser Window
-        - Create Entry in Environment for tdir
-
-        :return: String of browsed path
+        This Methods open the FileDialog and writes the selected Folder Path to a Function Variable and uses the
+        Environment.set_odir() to create the odir Entry in the WorkENV.xml
+        :return:
         """
         fd = QtWidgets.QFileDialog()
         print(r"Start Dialog File Search")
