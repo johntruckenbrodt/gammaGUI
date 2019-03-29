@@ -1,11 +1,4 @@
 # -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'D:\gammaGUIv2\gammaGUIv2\Qt_Export\QSubWindow_set_your_working_directory.ui'
-#
-# Created by: PyQt5 UI code generator 5.11.3
-#
-# WARNING! All changes made in this file will be lost!
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from auxilliary.environment import Environment
 from gammaGUIv2.gui_windows.QBrowseDialoge import BrowseDialoge
@@ -13,19 +6,21 @@ from gammaGUIv2.gui_windows.QBrowseDialoge import BrowseDialoge
 
 class Ui_QSubWindow_set_your_working_directory(object):
     """
-        This is the Class of the Set Your Workin Directory Window
+    This is the QSubWindow Class. This class contains the hole Layout of the QSubWindow_set_your_working_directory.
+    This file is executed over the triggered.connect() from the QMainWindow.
+    Here we can add Functionality to the Buttons via clicked.connect()
     """
 
     def setupUi(self, QSubWindow_set_your_working_directory):
         """
-        This the the Setup Method for the UI
-
-        IDEA -> Set Size of SubWindows in environment.Environment
-
+        TThis the the Setup Method for the UI
         :param MainWindow:
         :return:
         """
-        # Set Up window
+
+        ###
+        # Set up for QSubWindow_set_your_working_directory
+        ###
         QSubWindow_set_your_working_directory.setObjectName("QSubWindow_set_your_working_directory")
         QSubWindow_set_your_working_directory.resize(600, 141)
         self.verticalLayout = QtWidgets.QVBoxLayout(QSubWindow_set_your_working_directory)
@@ -57,28 +52,28 @@ class Ui_QSubWindow_set_your_working_directory(object):
 
         """
         2.Step of Implementation
-        -> Connect Buttons in the this SubWindow with our Functions
-        -> e.g Line: Printing os.getwd() in Line
-        -> eg. BrowseButton: Open File Dialoge Window -> Browse to Folder -> Pass this to enviroment.Enviroment as WDIR
-        -> read our Lineinput: -> Pass this to environment.Environment as WDIR
-        -> ButtonBOX:
-            - OK -> Pass Browsed Direktory to environment.ENvironment
-            - Cancel -> Quit this Window
-
-        Example of Implementation:
-        self.pushButton_3.setObjectName("pushButton_3")
-        self.pushButton_3.clicked.connect(BrowseDialoge.browse_function)
-
+        Now we are ready to link the Button with a Function via clicked.connect()        
+        -> Connect Buttons with another Window
+            self.pushButton_3.setObjectName("pushButton_3")
+            self.pushButton_3.clicked.connect(BrowseDialoge.browse_function)
+        
+        -> Set Placeholder in Line
+            self.lineEdit_3.setPlaceholderText(Environment.wdir)
+        
+        -> How to Activate the ButtonBox see: QSubWindow_data_extraction
         """
-
-        # Input Line Dialog
+        ###
+        # LineEdit: Working dir
+        ###
         self.lineEdit_3 = QtWidgets.QLineEdit(self.horizontalWidget_9)
         self.lineEdit_3.setObjectName("lineEdit_3")
         self.lineEdit_3.setPlaceholderText(Environment.wdir)
 
         self.horizontalLayout_9.addWidget(self.lineEdit_3)
 
-        # Browse Button
+        ###
+        # Browse Button:
+        ###
         self.pushButton_3 = QtWidgets.QPushButton(self.horizontalWidget_9)
         self.pushButton_3.setObjectName("pushButton_3")
         self.pushButton_3.clicked.connect(BrowseDialoge.browse_function)
@@ -91,7 +86,9 @@ class Ui_QSubWindow_set_your_working_directory(object):
         spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_14.addItem(spacerItem3)
 
+        ###
         # ButtonBox (Ok and Cancel)
+        ###
         # TODO Read out line String and Set Wdir in Environment, when press OK
         # TODO -- DOUBLE TROUBLE --- with browser, see to todo there -> rweite to parese to line -> and Set Enviroment with OK
         self.buttonBox_2 = QtWidgets.QDialogButtonBox(self.horizontalWidget_14)
@@ -102,8 +99,8 @@ class Ui_QSubWindow_set_your_working_directory(object):
         # self.buttonBox_2.accepted.connect(self.buttonBox_2.closeEvent)
         # self.buttonBox_2.accepted.connect(self.accept)
         # self.buttonBox_2.rejected.connect(self.reject)
-        #  self.accepted.connect(some_function)
-        #  self.accepted.connect(lambda: some_function(param))
+        # self.accepted.connect(some_function)
+        # self.accepted.connect(lambda: some_function(param))
 
         self.horizontalLayout_14.addWidget(self.buttonBox_2)
         spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -130,6 +127,10 @@ class Ui_QSubWindow_set_your_working_directory(object):
                                                "<html><head/><body><p>Press Ok to set your Working Directory</p><p>Press Cancel to Quit Dialog </p></body></html>"))
 
     def create_QSubWindow_set_your_working_directory(self):
+        """
+        This is the Method to Open the QSubWindow from the QMainWindow. This has to called from there.
+        :return:
+        """
         QSubWindow_set_your_working_directory = QtWidgets.QDialog()
         ui = Ui_QSubWindow_set_your_working_directory()
         ui.setupUi(QSubWindow_set_your_working_directory)
