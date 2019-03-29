@@ -13,13 +13,19 @@ from gamma.gamma_modules.par_S1_SLC import ParS1SLC
 
 class Ui_QSubWindow_S1_TOPS(object):
     """
-    TODO COMMENT AND MAKE IT PRETTY AND add ALL Functionality (only browse and ok are Working)
+    This is the QSubWindow Class of the S1 Tops Window.
+    This Class contains:
+        - the Layout and Buttons
+        - Link to par_S1_SLC
+    TODO add Functionality (only browse and ok are Working)
     """
     def setupUi(self, QSubWindow_S1_TOPS):
 
+        ###
+        # Setup for QSubwindow_{}
+        ###
         QSubWindow_S1_TOPS.setObjectName("QSubWindow_S1_TOPS")
         QSubWindow_S1_TOPS.resize(774, 255)
-
         self.verticalLayout = QtWidgets.QVBoxLayout(QSubWindow_S1_TOPS)
         self.verticalLayout.setObjectName("verticalLayout")
         self.verticalLayout_7 = QtWidgets.QVBoxLayout()
@@ -31,6 +37,9 @@ class Ui_QSubWindow_S1_TOPS(object):
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_8.addItem(spacerItem)
 
+        ###
+        # CheckBox:
+        ###
         self.checkBox_3 = QtWidgets.QCheckBox(self.horizontalWidget_8)
         self.checkBox_3.setObjectName("checkBox_3")
 
@@ -51,6 +60,9 @@ class Ui_QSubWindow_S1_TOPS(object):
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_8.addItem(spacerItem2)
 
+        ###
+        # CheckBox:
+        ###
         self.checkBox_4 = QtWidgets.QCheckBox(self.horizontalWidget_8)
         self.checkBox_4.setObjectName("checkBox_4")
 
@@ -58,6 +70,9 @@ class Ui_QSubWindow_S1_TOPS(object):
         spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_8.addItem(spacerItem3)
 
+        ###
+        # DateEdit:
+        ###
         self.dateEdit_3 = QtWidgets.QDateEdit(self.horizontalWidget_8)
         self.dateEdit_3.setObjectName("dateEdit_3")
 
@@ -70,6 +85,9 @@ class Ui_QSubWindow_S1_TOPS(object):
         spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_8.addItem(spacerItem5)
 
+        ###
+        # DateEdit:
+        ###
         self.dateEdit_4 = QtWidgets.QDateEdit(self.horizontalWidget_8)
         self.dateEdit_4.setObjectName("dateEdit_4")
 
@@ -93,11 +111,16 @@ class Ui_QSubWindow_S1_TOPS(object):
         spacerItem8 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_9.addItem(spacerItem8)
 
+        ###
+        # LineEdit:
+        ###
         self.lineEdit_3 = QtWidgets.QLineEdit(self.horizontalWidget_9)
         self.lineEdit_3.setObjectName("lineEdit_3")
-
         self.horizontalLayout_9.addWidget(self.lineEdit_3)
 
+        ###
+        # PushButton: InputFolder
+        ###
         self.pushButton_3 = QtWidgets.QPushButton(self.horizontalWidget_9)
         self.pushButton_3.setObjectName("pushButton_3")
         self.pushButton_3.clicked.connect(BrowseDialogeInput.browse_function)
@@ -113,10 +136,16 @@ class Ui_QSubWindow_S1_TOPS(object):
         spacerItem10 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_10.addItem(spacerItem10)
 
+        ###
+        # LineEdit:
+        ###
         self.lineEdit_4 = QtWidgets.QLineEdit(self.horizontalWidget_10)
         self.lineEdit_4.setObjectName("lineEdit_4")
         self.horizontalLayout_10.addWidget(self.lineEdit_4)
 
+        ###
+        # PushButton: OutputFolder
+        ###
         self.pushButton_4 = QtWidgets.QPushButton(self.horizontalWidget_10)
         self.pushButton_4.setObjectName("pushButton_4")
         self.pushButton_4.clicked.connect(BrowseDialogeOdir.browse_function)
@@ -133,11 +162,17 @@ class Ui_QSubWindow_S1_TOPS(object):
         spacerItem12 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_14.addItem(spacerItem12)
 
+        ###
+        # ProgressBar
+        ##
         self.progressBar_2 = QtWidgets.QProgressBar(self.horizontalWidget_14)
         self.progressBar_2.setProperty("value", 24)
         self.progressBar_2.setObjectName("progressBar_2")
         self.horizontalLayout_14.addWidget(self.progressBar_2)
 
+        ###
+        # ButtonBox OK, CANCEL
+        ###
         self.buttonBox_2 = QtWidgets.QDialogButtonBox(self.horizontalWidget_14)
         self.buttonBox_2.setOrientation(QtCore.Qt.Horizontal)
         self.buttonBox_2.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
@@ -155,6 +190,12 @@ class Ui_QSubWindow_S1_TOPS(object):
         QtCore.QMetaObject.connectSlotsByName(QSubWindow_S1_TOPS)
 
     def retranslateUi(self, QSubWindow_S1_TOPS):
+        """
+        This is the Method to rename every Entry in the Window.
+        If you want to Change Names DO IT HERE
+        :param QSubWindow_data_extraction:
+        :return:
+        """
         _translate = QtCore.QCoreApplication.translate
         QSubWindow_S1_TOPS.setWindowTitle(_translate("QSubWindow_S1_TOPS", "Dialog"))
         self.checkBox_3.setToolTip(_translate("QSubWindow_S1_TOPS", "<html><head/><body><p>Selects all Files in the Import Folder</p></body></html>"))

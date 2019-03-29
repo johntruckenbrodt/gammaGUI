@@ -430,7 +430,7 @@ class GammaArgs:
         # TODO mkdir S1A_IW_20170731T163002_A && mv S1A_IW_20170731T163002_A_iw1_vh.slc.par "$_" && mv S1A_IW_20170731T163002_A_iw1_vh.slc "$_" && mv S1A_IW_20170731T163002_A_iw1_vh.tops_par "$_"
         # HIer sollten 6 Daten nach mkdir stehen
         # Create List for all the Arguments
-        """"
+        """
         args = self.args
 
         # Make Instance of WorkENV.xml and read it
@@ -730,11 +730,10 @@ class GammaArgs:
 
         #return args,copy_args
         return my_tuple
-        """"
+
 
     def create_args_par_S1_GRD(self):
         """
-
         # TODO HANDLE "missing" args or different Default Values
         # TODO par_S1_SLC $(find . -iname s1a-iw1-slc-vh-20170731t163004-20170731t163029-017717-01dac5-001.tiff) $(find . -iname s1a-iw1-slc-vh-20170731t163004-20170731t163029-017717-01dac5-001.xml) $(find . -iname calibration-s1a-iw1-slc-vh-20170731t163004-20170731t163029-017717-01dac5-001.xml) $(find . -iname noise-s1a-iw1-slc-vh-20170731t163004-20170731t163029-017717-01dac5-001.xml) S1A_IW_20170731T163002_A_iw1_vh.slc.par S1A_IW_20170731T163002_A_iw1_vh.slc S1A_IW_20170731T163002_A_iw1_vh.tops_par 0 60.000
         # TODO mkdir S1A_IW_20170731T163002_A && mv S1A_IW_20170731T163002_A_iw1_vh.slc.par "$_" && mv S1A_IW_20170731T163002_A_iw1_vh.slc "$_" && mv S1A_IW_20170731T163002_A_iw1_vh.tops_par "$_"
