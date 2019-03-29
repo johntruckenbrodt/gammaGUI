@@ -55,9 +55,9 @@ file or directory of the SAR product for an unambiguous identification
     * PALSAR-2 GeoTIFF: product KML file (ALOS2....kml)
 
 The generated data and parameter files should follow the naming conventions hereafter
-    
+
     AAAA_BBBB_CCCCCCCCTDDDDDD_EE
-    
+
     Constituent ID   Constituent Name      Remarks
     ---------------------------------------------------------------------------
     AAAA             satellite name        should always contain the satellite
@@ -69,7 +69,7 @@ The generated data and parameter files should follow the naming conventions here
     CCCCCCCC         acquisition date      YYYYMMDD format
     DDDDDD           acquisition time      HHMMSS format
     EE               polarization channel  TxRx polarization (HH, HV, VH or VV)
-    
+
     Processing levels shall be indicated as lower case three-character extensions separated by underscores, e.g.
     TSX1______20090405T054534_HH_slc_cal for calibrated single-look complex data. Used identifiers in this script are
     slc, mli and geo.
