@@ -1,7 +1,3 @@
-# Searches for Files for Import to Gamma
-# Inheriate readers from gammaGUI
-# Adjust these ?!
-
 # import os
 # from auxilliary.read_env import ReadEnv
 # import xml.etree.cElementTree as ET
@@ -14,34 +10,19 @@ from gamma.gamma_args.create_gamma_args import GammaArgs
 import subprocess as sp
 
 
-# Diese Klasse Repersensiert das S1_TOPS Gamma Module
-# Damit wenn ok geklickt die Gamma Prozessierung startet
-# Dazu brauche ich :
-#   - eine Methode zum erstellen der Argumente
-#           -
-
-
-
 class ParS1SLC():
     """
-    This Class Contains a method to handle the Given Arguments
-    from D:\gammaGUIv2\auxilliary\create_args.py  -> Args.create_args_S1_TOPS()
-
+    This is the API Class to the Server to process the with Gamma.
+    It is used to run the received arguments from create_gamma_args.py
     """
-
-    # def __init__(self):
-    #     self.WorkEnv = ""
-
-
     def run_par_S1_SLC():
         """
-        This is the Function to execute the received List of Lists from Args.create_args_S1_TOPS() on the shell
+        This is the Method to execute the received Tuple form Args.create_args_S1_TOPS()
         Therefore subprocess.Popen(args,shell = T) is used
         :return:
         """
 
         print("------- Start Importing S1_TOPS data to GAMMA ------")
-        # Import list of Arguments from ceate_args.py create_args_S1_TOPS
         my_Args = GammaArgs()
         my_args_list = my_Args.create_args_par_S1_SLC()
 
@@ -74,8 +55,6 @@ class ParS1SLC():
             sp.Popen(my_args, shell=True)
 
         print("------- Create Folders (Basename) and copy specific slc Files tops. par ------")
-        # TODO "Clean Up" Create Folders und copy Specific Files there
-
         for i in range(0, len(my_args_list[1])):
             my_args = my_args_list[1][i] #.split() vllt nötig (has to be tested in the Server)
             print(my_args)
@@ -84,12 +63,11 @@ class ParS1SLC():
 
         print("------- CREATE XML FILE FOR *.slc.par and *.tops.par ------")
 
-        #TODO Implement XML Creater
-        #TODO slc_mosaic_S1_TOPS -> in new Folder
-        #TODO Rewrite Script to Object
-        #TODO WRITE FUNCTION TO READ XML FILE AND READ ML FACKTOR AND SO ON
-        #TODO THNIK OF FURTHER PROCESSING
-        #     - automated or "clicky" or both (Check Button ?!)
+        #TODO
+        # Implement XML Creater
+        # Implement further Gamma Functions
+        # Write and Implement Funcktion to Read the par.xml Data e.g. extract multilooking factors
+        # Think about the further Processing, fully automated or "clicky" or both (Combine with Check Buttons?!)
 
 if __name__ == '__main__':
     #TODO Clean up make it runing from Main (if possible)
