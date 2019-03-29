@@ -9,7 +9,9 @@ from gammaGUIv2.gui_windows.QSubWindow_S1_GRD import Ui_QSubWindow_S1_GRD
 
 class Ui_MainWindow(object):
     """
-    This is the Class of the Main Window
+    This is the QMainWindow Class. This class contains the hole Layout of the Main Window.
+    This file is executed in the app_gammaGUI.py
+    Here you can link the MainWindow with all QSubWindows via triggered.connect()
     """
     def setupUi(self, MainWindow):
         """
@@ -17,21 +19,27 @@ class Ui_MainWindow(object):
         :param MainWindow:
         :return:
         """
+        ###
         # Set up for Main Window
+        ###
         MainWindow.setObjectName("MainWindow")
         MainWindow.setWindowModality(QtCore.Qt.NonModal)
         MainWindow.setEnabled(True)
         MainWindow.resize(720, 536)
         MainWindow.setFocusPolicy(QtCore.Qt.NoFocus)
 
+        ###
         # Set the Backgroundimage
+        ###
         self.oImage = QtGui.QImage(Environment.backgroundImage)
         self.sImage = self.oImage.scaled(QtCore.QSize(720, 536))
         self.palette = QtGui.QPalette()
         self.palette.setBrush(10, QtGui.QBrush(self.sImage))
         MainWindow.setPalette(self.palette)
 
+        ###
         # Create all Objects in MainWindow
+        ###
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setEnabled(True)
         self.centralwidget.setObjectName("centralwidget")
@@ -64,7 +72,9 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
+        ###
         # Action Data -> Make Subfolder in Menubar
+        ###
         self.actionData_Extraction = QtWidgets.QAction(MainWindow)
         self.actionData_Extraction.setCheckable(False)
         self.actionData_Extraction.setObjectName("actionData_Extraction")
@@ -174,28 +184,31 @@ class Ui_MainWindow(object):
 
         """
         1. Step of Implementation
-        -> Create connecntion to SubWindows
+        -> Create a connection to QSubWindows
         -> use self.action{}.triggered.connect(Ui_QSubWindow{}.create_QSubWindow_{})
-                
+        
+        Example:        
         self.menuImport.addAction(self.actionSet_Working_Dir)
         self.actionSet_Working_Dir.triggered.connect(Ui_QSubWindow_set_your_working_directory.create_QSubWindow_set_your_working_directory)
         
         Workflow: 
-            - First add all SubWindows to MainWindow Entries (Menubar)
+            - Link the QSubWindow to QMainWindow Entries (Menubar)
                 - Therefore : 
                                 -   Import from gammaGUIv2.gui_windows the wanted Ui_QSubWindows_{}
                                     e.g  from gammaGUIv2.gui_windows.QSubWindow_set_your_working_directory import Ui_QSubWindow_set_your_working_directory
-                                -   Find Place in Script were the Entrie is called: 
+                                    
+                                -   Find Place in Script were the Entry is called: 
                                     e.g. self.menuImport.addAction(self.actionSet_Working_Dir)
                                          self.actionSet_Working_Dir.triggered.connect(Ui_QSubWindow_set_your_working_directory.create_QSubWindow_set_your_working_directory)
                                          
             - After that you Can modify the SubWindows (Buttons etc.) -> Button clicked -> def do_something
                 - Therefore:
                                 -   Open QSubWindow_{}.py
-                                -   Set your Wanted Imports: You can call a another QSubWindow (e.g QBrowseDialoge.py), SET Your ENVIROMENT import
+                                -   Set your Imports
                                     e.g. from auxilliary.environment import Environment
                                         from gammaGUIv2.gui_windows.QBrowseDialoge import BrowseDialoge
-                                -   Find Place in Script were the Buttons are Created to add Functionalitiy to them:
+                                        
+                                -   Find Place in Script were the Buttons are Created to add Functionality to them:
                                     e.g. self.pushButton_3.setObjectName("pushButton_3")
                                          self.pushButton_3.clicked.connect(BrowseDialoge.browse_function)
                                          self.pushButton_4.clicked.connect(BrowseDialogeOdir.browse_function)
@@ -205,19 +218,17 @@ class Ui_MainWindow(object):
             - HAVE FUN WITH CODING
                 - Therefore:
                                 - Write your own Stuff, and learn python while your creating a GUI
-                                         
-                                
-                                
-                                
-            - From that called Function you have Access to all necessary SubScripts        
-               
-
+                                - If you are at the End of the Script open the QSubWindow_{}.py   
         """
+        ###
         # Set Action to S1_TOPS
+        ###
         self.menuSentinel1.addAction(self.actionS1_TOPS)
         self.actionS1_TOPS.triggered.connect(Ui_QSubWindow_S1_TOPS.create_Ui_QSubWindow_S1_TOPS)
 
+        ###
         # Set Action to S1_GRD
+        ###
         self.menuSentinel1.addAction(self.actionS1_GRD)
         self.actionS1_GRD.triggered.connect(Ui_QSubWindow_S1_GRD.create_Ui_QSubWindow_S1_GRD)
 
@@ -234,11 +245,15 @@ class Ui_MainWindow(object):
         self.menuGeneral_Data_Import.addAction(self.actionLandsat7)
         self.menuGeneral_Data_Import.addAction(self.actionLandsat8)
 
+        ###
         # Set Action to Working Directory
+        ###
         self.menuImport.addAction(self.actionSet_Working_Dir)
         self.actionSet_Working_Dir.triggered.connect(Ui_QSubWindow_set_your_working_directory.create_QSubWindow_set_your_working_directory)
 
+        ###
         # Set Action to Data_Extraction
+        ###
         self.menuImport.addAction(self.actionData_Extraction)
         self.actionData_Extraction.triggered.connect(Ui_QSubWindow_data_extraction.create_Ui_QSubWindow_data_extraction)
 
@@ -280,12 +295,14 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         """
-        This Method renames everything in the Main Window
-        If you want to CHANGE NAMES DO IT HERE
+        This is the Method to rename every Entry in the Window.
+        If you want to Change Names DO IT HERE
         :param MainWindow:
         :return:
         """
+        ###
         # "&ISP" -> Short Cut Alt+I -> Select tab by Keyboard
+        ##
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Gamma GUI v2"))
         self.menuImport.setTitle(_translate("MainWindow", "&Import"))
