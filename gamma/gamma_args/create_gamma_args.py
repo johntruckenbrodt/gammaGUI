@@ -7,11 +7,9 @@ import sys
 
 class GammaArgs:
     """
-    This is the Class for all Arguments which are passed to the GammaSoftware. The Script where the Commands are passed
-    is e.g. gamma/gamma_modules/S1_TOPS.py
-    Aim of this Class is to contain all necessary Methods to create the specific Arguments (in the correct Order)
-    which should be passed to the corresponding GammaSoftware Module e.g. create_args_S1_TOPS()
-    The Output goes to gamma/gamma_modules/S1_TOPS.py where the Arguments are given to the shell
+    This is the Class witch contains all Methods which creates and returns
+    the needed processing Arguments for the gamma processing for the API Modules.
+    eg. gamma/gamma_modules/par_S1_SLC.py
     """
 
     def __init__(self):
@@ -20,12 +18,13 @@ class GammaArgs:
     def create_args_par_S1_SLC(self):
         """
         This is the Function to Create all needed Arguments in the correct Order for the par_S1_SLC Module.
-        Corresponding Window: gammaGUIv2/gui_windows/QSubWindow_S1_TOPS.py where the Input comes from
-        Therefore:
-            - the WorkEnv.xml,GammaCommands.xml is read and the WorkEnv and Import Directory are extracted
-            - The Import Directory contains: the Extracted *zip Files in the *.SAFE Format
-            - For every Folder (*.SAFE) in this ImportDIR a loop is executed:
-                - The loop searches in the *.SAFE Folder for all necessary Files and Creates the corresponding Outputfilenames:
+        Corresponding Window: QSubWindow_S1_TOPS.py, from here comes the Input over the API file par_S1_SLC.py
+
+        This Function works like this:
+            - WorkENV.xml, GammaCommands.xml are read and the Values are Extraxted (WorkEnv, idir, gammma_module_name)
+            - The Import Directory contains: extracted *.zip Files in the *.SAFE Format
+            - For every Folder (*.SAFE) a loop is executed:
+                - The loop is searching in every *.SAFE Folder for the necessary Files and creates the corresponding Arguments for Gamma
                     - Input:
                         - GeoTIFFS
                         - annotation_XML
@@ -35,8 +34,17 @@ class GammaArgs:
                         - Names for SLC_par
                         - Names for SLC
                         - Names for TOPS_par
-                - The Loop Returns a List of Lists, where a List corresponds to a specific *SAFE Folder
-                    and contains a List of needed Arguments.
+                - The Loop Returns a List(1) of Lists(2),
+                    - where the List(1)
+                        representes the *.SAFE Folder
+                    - and the corresponding List(2)
+                        contains a List of Orderd Gamma Aruments (from the Folder Structure of the *.SAFE Folder)
+            - For the Return Argument a loop is exucted:
+                - This loop adjusts the Output to Linux Format
+                - I could realy test where the output goes, i think in the home dir
+            - To Clean up the Output another Loop is executed:
+                - This loop creates a Folder and moves every corresponding processed Gamma Output to the Correct folder
+
 
                 ------- Collecting all *SAFE Folders -------
                 ['S1A_IW_SLC__1SDV_20170731T163002_20170731T163029_017717_01DAC5_4796.SAFE', 'S1A_IW_SLC__1SDV_20170812T163002_20170812T163029_017892_01E015_2E07.SAFE']
@@ -67,13 +75,16 @@ class GammaArgs:
                 ------- RETURD ARGUMENTS --------
                 par_S1_SLC s1a-iw1-slc-vh-20170731t163004-20170731t163029-017717-01dac5-001.tiff s1a-iw1-slc-vh-20170731t163004-20170731t163029-017717-01dac5-001.xml calibration-s1a-iw1-slc-vh-20170731t163004-20170731t163029-017717-01dac5-001.xml noise-s1a-iw1-slc-vh-20170731t163004-20170731t163029-017717-01dac5-001.xml S1A_IW_20170731T163002_A_iw1_vh.slc.par S1A_IW_20170731T163002_A_iw1_vh.slc S1A_IW_20170731T163002_A_iw1_vh.tops_par 0 60.000
                 par_S1_SLC s1a-iw1-slc-vv-20170731t163004-20170731t163029-017717-01dac5-004.tiff s1a-iw1-slc-vv-20170731t163004-20170731t163029-017717-01dac5-004.xml calibration-s1a-iw1-slc-vv-20170731t163004-20170731t163029-017717-01dac5-004.xml noise-s1a-iw1-slc-vv-20170731t163004-20170731t163029-017717-01dac5-004.xml S1A_IW_20170731T163002_A_iw1_vv.slc.par S1A_IW_20170731T163002_A_iw1_vv.slc S1A_IW_20170731T163002_A_iw1_vv.tops_par 0 60.000
+                ------- Adjust to Linux ---------
+                par_S1_SLC $(find . -iname s1a-iw1-slc-vh-20170731t163004-20170731t163029-017717-01dac5-001.tiff) $(find . -iname s1a-iw1-slc-vh-20170731t163004-20170731t163029-017717-01dac5-001.xml)
+                par_S1_SLC $(find . -iname s1a-iw1-slc-vv-20170731t163004-20170731t163029-017717-01dac5-004.tiff) $(find . -iname s1a-iw1-slc-vv-20170731t163004-20170731t163029-017717-01dac5-004.xml)
+                ------- Move the Files to Folder ------
+                mkdir S1A_IW_20170731T163002_A && mv S1A_IW_20170731T163002_A_iw1_vh.slc.par "$_" && mv S1A_IW_20170731T163002_A_iw1_vh.slc "$_" && mv S1A_IW_20170731T163002_A_iw1_vh.tops_par "$_" ...
+                mkdir S1A_IW_20170812T163002_A && mv S1A_IW_20170812T163002_A_iw1_vh.slc.par "$_" && mv S1A_IW_20170812T163002_A_iw1_vh.slc "$_" && mv S1A_IW_20170812T163002_A_iw1_vh.tops_par "$_" ...
 
-        :return:
+        :return: tuble of Arguments
         """
         # TODO HANDLE "missing" args or different Default Values
-        # TODO par_S1_SLC $(find . -iname s1a-iw1-slc-vh-20170731t163004-20170731t163029-017717-01dac5-001.tiff) $(find . -iname s1a-iw1-slc-vh-20170731t163004-20170731t163029-017717-01dac5-001.xml) $(find . -iname calibration-s1a-iw1-slc-vh-20170731t163004-20170731t163029-017717-01dac5-001.xml) $(find . -iname noise-s1a-iw1-slc-vh-20170731t163004-20170731t163029-017717-01dac5-001.xml) S1A_IW_20170731T163002_A_iw1_vh.slc.par S1A_IW_20170731T163002_A_iw1_vh.slc S1A_IW_20170731T163002_A_iw1_vh.tops_par 0 60.000
-        # TODO mkdir S1A_IW_20170731T163002_A && mv S1A_IW_20170731T163002_A_iw1_vh.slc.par "$_" && mv S1A_IW_20170731T163002_A_iw1_vh.slc "$_" && mv S1A_IW_20170731T163002_A_iw1_vh.tops_par "$_"
-        # HIer sollten 6 Daten nach mkdir stehen
         # Create List for all the Arguments
         args = self.args
 
@@ -84,18 +95,13 @@ class GammaArgs:
         # Make Instance of XMLCreaterGAMMA and Read the par_S1_SLC Command
         gamma = XMLCreaterGAMMA()
         gamma_com = gamma.read_XMLGAMMA("par_S1_SLC")
-        #print(gamma_com)
 
-        # print("------- Print Work ENV ------")
-        # print(WorkEnv)
         print("------- Creating necessary Variables --------")
         # Create Import Dir
         idir = WorkEnv[1]
-        #print(idir)
 
         # Create Output Dir -> I Think not necessary in this Case ... Gamma Processing
         odir = WorkEnv[3]
-        #print(odir)
 
         # Root the WorkENV.xml
         root = ET.parse(WorkEnv[4]).getroot()
@@ -107,8 +113,7 @@ class GammaArgs:
         # Create List for all *.SAFE Folders (TopList of the List in List)
         folders = list()
 
-        # Define Variables Gamma needs -> everything a list (Lists in TopLists)
-
+        ### Gamma Commands
         # GAMMA Input
         GeoTIFF = list()  # includes list of tiffs
         annotation_XML = list()
@@ -123,11 +128,6 @@ class GammaArgs:
         dytpe = "0"  # 0 is default(FCOMPLEX), 1 (SCOMPLEX)
         sc_dB = "60.000"  # Scale Factro for FCOMPLEX -> SCOMPLEX, default HH,VV (dB): 60.000 , VH,HV: 70.000
 
-        # print("Import dir: " + idir)
-        # print("Export dir: " + odir)
-        # print("Root:")
-        # print(root)
-
         print("------- Reading S1_TOPS Data *.SAFE FORMAT --------")
 
         print("------- Collecting all *SAFE Folders -------")
@@ -141,10 +141,7 @@ class GammaArgs:
         for i in folders:
             subfoldtmp = list()
             for j in os.listdir(os.path.join(idir, i, "measurement")):
-                print(j)
-                #subfoldtmp.append("".join(["$(find .iname ", j, ")"]))
                 subfoldtmp.append(j)
-                #subfoldtmp.append(os.path.join(i, "measurement", j))
             GeoTIFF.append(subfoldtmp)
         for i in GeoTIFF:
             print(i)
@@ -154,7 +151,6 @@ class GammaArgs:
             subfoldtmp = list()
             for j in os.listdir(os.path.join(idir, i, "annotation")):
                 if j.endswith(".xml"):
-                    #subfoldtmp.append(os.path.join(i, "annotation", j))
                     subfoldtmp.append(j)
             annotation_XML.append(subfoldtmp)
         for i in annotation_XML:
@@ -165,7 +161,6 @@ class GammaArgs:
             subfoldtmp = list()
             for j in os.listdir(os.path.join(idir, i, "annotation", "calibration")):
                 if j.startswith("calibration"):
-                    #subfoldtmp.append(os.path.join(i, "calibration", j))
                     subfoldtmp.append(j)
                     calibration_XML.append(subfoldtmp)
             calibration_XML.append(subfoldtmp)
@@ -202,37 +197,7 @@ class GammaArgs:
         # print(self.outname_base)
 
         print("------- Creating Names for SLC_par Outputfiles -------")
-
-        # for i in folders:
-        #     subfoldtmp = list()
-        #     for j in os.listdir(os.path.join(idir, i, "measurement")):
-        #         subfoldtmp.append(j)
-        #     GeoTIFF_names.append(subfoldtmp)
-        # # for i in GeoTIFF_names:
-        # #     print(i)
-
-        # Pattern for _iw1_vv.slc.par
-        # pattern = r"^(?P<sat>s1[ab]\-(?P<beam>iw1|iw2|iw3)\-(?P<prod>slc)\-(?P<pols>vv|vh)*)"
-        # #pattern = r"^(?P<path>S1[AB])[0-9A-Za-z\_\\\.]+"
-        # print(pattern)
-        # for i in range(len(GeoTIFF_names)):
-        #     suboutname_tmp = list()
-        #     for j in range(len(GeoTIFF_names[i])):
-        #         match = re.match(pattern, GeoTIFF_names[i][j])
-        #         #print(match)
-        #         self.outname_tmp = "_".join(
-        #             [match.group("beam"),match.group("pols"),".SLC.par"]).replace("D","")
-        #         # self.outname_tmp = "_".join([match.group("beam")])
-        #         #self.outname_tmp = match
-        #         #print(self.outname_tmp)
-        #         suboutname_tmp.append(("_".join(
-        #             [outname_base[i], match.group("beam"), match.group("pols"), ".slc.par"]).replace("D",
-        #                                                                                                   "")).replace(
-        #             "_.slc", ".slc"))
-        #     # print(self.suboutname_tmp)
-        #     outname_SLC_par.append(suboutname_tmp)
-
-        # Pattern for _iw1_vv.slc.par
+        # Pattern for _iw*_vv.slc.par
         pattern = r"^(?P<sat>s1[ab]\-(?P<beam>iw1|iw2|iw3)\-(?P<prod>slc)\-(?P<pols>vv|vh)*)"
         # print(pattern)
         for i in range(len(GeoTIFF)):
@@ -299,10 +264,7 @@ class GammaArgs:
         for i in outname_SLC_par:
             print(i)
 
-        # print(self.outname_SLC_tops_par)
-
-        # "".join(["$(find .iname ", j, ")"])
-
+        print("------- Transforming to Linux Syntax -------")
         for i in range(len(GeoTIFF)):
             for j in range(len(GeoTIFF[i])):
                 print((" ".join([gamma_com, "".join(["$(find . -iname ", GeoTIFF[i][j], ")"]),
@@ -329,9 +291,8 @@ class GammaArgs:
                 #run(["XML_S1_TOPS", self.GeoTIFF[i][j]])
 
 
-        print("This are my ARGS to PASS TO S1_TOPS.py -> Run S1 TOPS")
-        print(args)
-
+        # print("This are my ARGS to PASS TO S1_TOPS.py -> Run S1 TOPS")
+        # print(args)
         print("------- Creating Arguments to copy produced SLC Files to its own folder")
 
         #mkdir S1A_IW_20170731T163002_A && mv S1A_IW_20170731T163002_A_iw1_vh.slc.par "$_" && mv S1A_IW_20170731T163002_A_iw1_vh.slc"$_" && mv S1A_IW_20170731T163002_A_iw1_vh.tops_par"$_"
@@ -339,9 +300,7 @@ class GammaArgs:
 
         # Create list for Copy Args
         copy_args = list()
-
         for i in range(len(outname_base)):
-            print("Hallo")
             print((" ".join(["mkdir", outname_base[i],
                              " ".join(["&& mv", outname_SLC_par[i][0],'"$_"'])," ".join(["&& mv", outname_SLC[i][0], '"$_"']), " ".join(["&& mv", outname_SLC_tops_par[i][0], '"$_"']),
                              " ".join(["&& mv", outname_SLC_par[i][1], '"$_"'])," ".join(["&& mv", outname_SLC[i][1], '"$_"'])," ".join(["&& mv", outname_SLC_tops_par[i][1], '"$_"']),
@@ -358,20 +317,21 @@ class GammaArgs:
                              " ".join(["&& mv", outname_SLC_par[i][5], '"$_"'])," ".join(["&& mv", outname_SLC[i][5], '"$_"'])," ".join(["&& mv", outname_SLC_tops_par[i][5], '"$_"'])]))
             copy_args.append(copy_args_tmp)
 
-        print("Print jetzt die Argzmente zum in der Liste Kopieren der SLO Daten")
+
         for i in copy_args:
             print(i)
-
+        print("Creating Tuple and Returning it to the API File: par_S1_SLC.py")
         my_tuple = tuple((args, copy_args))
 
-        print("------- Returning Collected Arguments to S1_TOPS.py to run par_S1_SLC Gamma Module -------")
-
-        #return args,copy_args
         return my_tuple
 
         #TODO
         # create_args_{xy} for further Processing Sequence
         # -> in gamma/gamma_modules/S1_TOPS.py just implement the right order for S1_TOPS data
+
+    ## Felix welche ist die Richtige?!
+
+
     def create_args_par_S1_grd(self):
         """
         This is the Function to Create all needed Arguments in the correct Order for the par_S1_SLC Module.
