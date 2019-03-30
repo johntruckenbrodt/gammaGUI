@@ -3,7 +3,8 @@ from auxilliary.environment import Environment
 
 class ReadEnv:
     """
-    This is the Class of ReadEnv. This Class contain a universal Method to Read the WorkEnv.xml File and returns a tuple of the Values
+    This is the Class ReadEnv.
+    It contains a universal Method to read the WorkEnv.xml File and returns the stored Values
     """
 
     def __init__(self):
@@ -13,15 +14,16 @@ class ReadEnv:
 
     def read_env(self):
         """
-        This Function roots the WorkEnv.xml File and returns a tuple. The Order is defined in environment.Environment.set_wdir()
-            - 0. wdir
-            - 1. idir
-            - 2. tdir
-            - 3. odir
+        This Method reads the WorkEnv.xml and returns a tuple of the Entries.
+        The order is defined in environment.Environment.set_wdir():
+            - 0. wdir path
+            - 1. idir path
+            - 2. tdir path
+            - 3. odir path
             - 4. WorkEnv.xml path
             - 5. backgroundimage path
             - 6. GammaCommands.xml path
-        :return: WorkEnv tuple
+        :return: tuple of WorkEnv.xml
         """
         doc = self.tree
         root = doc.getroot()
@@ -31,10 +33,6 @@ class ReadEnv:
             my_list.append(root[i].text)
 
         my_tuple = tuple(my_list)
-
-        # print(my_list)
-        # print(my_tuple)
-        # print(len(root.getchildren()))
         #return my_list
         return my_tuple
 
