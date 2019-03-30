@@ -6,18 +6,14 @@ import xml.etree.cElementTree as ET
 from xml.dom import minidom
 from auxilliary.read_env import ReadEnv
 
-# TODO Fit in ENVIROMENT -> The Arguments -> Start of Programm -> initialize GammaCommand.xml
-#  Dont know what i thought here, first you can ignore this
-
-# TODO Implement xml_Creater for PAR Files -> see Script Stefan
+# TODO Implement xml_Creater for PAR Files -> see Script implement_me_to_xml_creator.py
 
 class XMLCreaterGAMMA:
     """
-    This Class Contains:
-    - Method to Create A XML FIle Based on USER INPUT
-        - Usage: Build YOUR XML e.g. All NAMES for GAMMA MODULES e.g. par_S1_SLC, par_S1_GRD
-        - Run this File as main() -> Implement new Gamma Module command -> also useful for status Documentation
-    - Method to Read the GammaCommands.xml and Select a Argument by it's name (Same name as in GammaSoftware eg. par_S1_SLC
+    This is the Class to Create and Read XML Data for or from the Gamma Output Text Files.
+    At the moment it Contains:
+        - Methods to write and read the GammaCommands.xml
+        - Methods to write and read the *PAR.xml Files (shout be implementet today, by Felix)
     """
 
     def __int__(self, path, filename, args):
@@ -28,13 +24,16 @@ class XMLCreaterGAMMA:
 
     def create_XMLGAMMA(self, path, filename, args):
         """
-        This Function creates a XML File based on the Inputparameter
-        Run this in the main() of this Window (TODO possibly find better solution?!)
-        TODO make nice print Commands
-        :param filename: Name of XML File
-        :param path: OutputDir
-        :param args: List of Arguments(str) for the Entries in XML File
-        :return:
+        This Method creates a XML File based on Users Input. It is used to create the GammaCommands.xml.
+        This File is on the one side created to track the implementation Status on the other side to
+        ensure readable and a easy access to the needed Gamma Commands.
+        If you run this Function by its on (in this File) you can easily add a new Gamma Command by adding it to the List
+        TODO is there a better Solution?! Make nice Print Commands
+
+        :param filename: string of Filename
+        :param path: string of OutputDir
+        :param args: List of string Arguments (Name of the Gamma Command)
+        :return: File Creation
         """
         self.filename = filename + ".xml"
         print("The Filename is:" + self.filename)
@@ -44,7 +43,7 @@ class XMLCreaterGAMMA:
 
         print(self)
         print("Start Creating XML-File for GAMMA Main Commands")
-        print("Initalize GammaCommand.xml")
+        print("Initialize GammaCommand.xml")
         root = ET.Element("root")
         ####
         a = ET.Element("GAMMA_COMMANDS")
@@ -64,10 +63,10 @@ class XMLCreaterGAMMA:
 
     def read_XMLGAMMA(self,GammaCommandKey):
         """
-        This Function reads the GammaCommands.xml File and returns the searched name of the Entry.
-        While GammaCommandKey is the Search Term, as well as the original Name of the GammaModule
-        :param GammaCommandKey:
-        :return:
+        This is the Method to read the GammaCommands.xml. It returns the Name of the Gamma Command.
+
+        :param GammaCommandKey: string of Gamma Command name
+        :return: string of GammaCommand
         """
 
         WorkENV = ReadEnv()
@@ -78,19 +77,8 @@ class XMLCreaterGAMMA:
         #filename = filename +".xml"
         gammacommandkey = GammaCommandKey
 
-        print("Read GammaCommands.xml")
-
-        # IDEA: Write on Entry in Enviroment where all the Arguments[in the correct order] are Stored we need for GammaProcessing
-        #       - Therefore we need a Method to Create This String
-        #           - Therefore we need more methods to create the SubElements of the String
         tree = ET.parse(path)
-        print("Das ist die Struktur des Trees")
-        print(tree)
         root = tree.getroot()
-        print(root)
-        print(root.attrib)
-        # for child in root:
-        #     print(child.tag, child.attrib)
 
         for elem in root.iter(gammacommandkey):
             print(elem.attrib["name"])
@@ -103,7 +91,7 @@ class XMLCreaterGAMMA:
 
 if __name__ == '__main__':
     """
-    Run this to add a new GammaCommandKey to the GammaCommands.xml File
+    Here you can add a new GammaCommand to the GammaCommands.xml Just add the ne Module to the list and run this file
     """
     xml = XMLCreaterGAMMA
     # Create List with all Entries (GammaMain Commands)
