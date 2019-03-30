@@ -1,7 +1,3 @@
-# Searches for Files for Import to Gamma
-# Inheriate readers from gammaGUI
-# Adjust these ?!
-
 # import os
 # from auxilliary.read_env import ReadEnv
 # import xml.etree.cElementTree as ET
@@ -19,34 +15,7 @@ class ParS1SLC():
     This is the API Class to the Server to process the with Gamma.
     It is used to run the received arguments from create_gamma_args.py
     """
-
-    def run_par_S1_GRD():
-        print("------- Start Importing S1_TOPS data to GAMMA ------")
-        # Import list of Arguments from ceate_args.py create_args_S1_TOPS
-        my_Args = GammaArgs()
-        my_args_list = my_Args.create_args_par_S1_GRD()
-
-        print("------- Run Arguments for par_S1_SLC Gamma Command ------")
-
-        for i in range(0, len(my_args_list[0])):
-            my_args = my_args_list[0][i] #.split() vllt nötig (has to be tested in the Server)
-            print(my_args)
-            #sp.run(parser.parse_args(my_args))
-            sp.Popen(my_args, shell=True)
-
-        print("------- Create Folders (Basename) and copy specific slc Files tops. par ------")
-        # TODO "Clean Up" Create Folders und copy Specific Files there
-
-        for i in range(0, len(my_args_list[1])):
-            my_args = my_args_list[1][i] #.split() vllt nötig (has to be tested in the Server)
-            print(my_args)
-            #sp.run(parser.parse_args(my_args))
-            sp.Popen(my_args, shell=True)
-
     def run_par_S1_SLC():
-
-    # def __init__(self):
-    #     self.WorkEnv = ""
         """
         This is the Method to execute the received Tuple form Args.create_args_S1_TOPS()
         Therefore subprocess.Popen(args,shell = T) is used
@@ -117,5 +86,3 @@ if __name__ == '__main__':
     # #readed.module_S1_TOPS(readed)
 
     print(readed)
-
-
