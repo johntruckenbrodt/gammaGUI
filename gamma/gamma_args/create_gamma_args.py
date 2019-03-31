@@ -328,11 +328,9 @@ class GammaArgs:
 
     def create_args_par_S1_GRD(self):
         """
-        # TODO HANDLE "missing" args or different Default Values
-        # TODO par_S1_SLC $(find . -iname s1a-iw1-slc-vh-20170731t163004-20170731t163029-017717-01dac5-001.tiff) $(find . -iname s1a-iw1-slc-vh-20170731t163004-20170731t163029-017717-01dac5-001.xml) $(find . -iname calibration-s1a-iw1-slc-vh-20170731t163004-20170731t163029-017717-01dac5-001.xml) $(find . -iname noise-s1a-iw1-slc-vh-20170731t163004-20170731t163029-017717-01dac5-001.xml) S1A_IW_20170731T163002_A_iw1_vh.slc.par S1A_IW_20170731T163002_A_iw1_vh.slc S1A_IW_20170731T163002_A_iw1_vh.tops_par 0 60.000
-        # TODO mkdir S1A_IW_20170731T163002_A && mv S1A_IW_20170731T163002_A_iw1_vh.slc.par "$_" && mv S1A_IW_20170731T163002_A_iw1_vh.slc "$_" && mv S1A_IW_20170731T163002_A_iw1_vh.tops_par "$_"
-        # HIer sollten 6 Daten nach mkdir stehen
-        # Create List for all the Arguments
+        Original Code by Stefan, Implementation by Felix
+        No tests executed
+        :return:
         """
         print("Start Import S1 GRD")
         args = self.args
@@ -399,7 +397,7 @@ class GammaArgs:
         print("------- Reading S1_GRD Data *.SAFE FORMAT --------")
 
         print("------- Collecting all *SAFE Folders -------")
-        # GeoTIFF, annotation_XML, calibration_XML, noise_XML, SLC_par, SLC, TOPS_par, dtype, sc_dB
+        # GeoTIFF, annotation_XML, calibration_XML, noise_XML,
         for i in os.listdir(idir):  # loop through items in dir
             if i.endswith(extension):  # check for ".zip" extension
                 folders.append(i)
@@ -409,9 +407,7 @@ class GammaArgs:
         for i in folders:
             subfoldtmp = list()
             for j in os.listdir(os.path.join(idir, i, "measurement")):
-                # subfoldtmp.append("".join(["$(find .iname ", j, ")"]))
                 subfoldtmp.append(j)
-                # subfoldtmp.append(os.path.join(i, "measurement", j))
             GeoTIFF.append(subfoldtmp)
         for i in GeoTIFF:
             print(i)
@@ -421,7 +417,6 @@ class GammaArgs:
             subfoldtmp = list()
             for j in os.listdir(os.path.join(idir, i, "annotation")):
                 if j.endswith(".xml"):
-                    # subfoldtmp.append(os.path.join(i, "annotation", j))
                     subfoldtmp.append(j)
             annotation_XML.append(subfoldtmp)
         for i in annotation_XML:
@@ -432,7 +427,6 @@ class GammaArgs:
             subfoldtmp = list()
             for j in os.listdir(os.path.join(idir, i, "annotation", "calibration")):
                 if j.startswith("calibration"):
-                    # subfoldtmp.append(os.path.join(i, "calibration", j))
                     subfoldtmp.append(j)
                     calibration_XML.append(subfoldtmp)
             calibration_XML.append(subfoldtmp)
@@ -445,8 +439,6 @@ class GammaArgs:
             subfoldtmp = list()
             for j in os.listdir(os.path.join(idir, i, "annotation", "calibration")):
                 if j.startswith("noise"):
-                    # subfoldtmp.append(os.path.join(i, "annotation", "calibration", j))
-                    # subfoldtmp.append(j) #WARNING: noise level values file: NESZ value(s) above -20 dB found (inf dB),WARNING: noise level values will not be used
                     subfoldtmp.append("-")  # thermal noise is already deleted --> to add back  activate line above
             noise_XML.append(subfoldtmp)
         for i in noise_XML:
@@ -478,17 +470,12 @@ class GammaArgs:
             suboutname_tmp2 = list()
             for j in range(len(GeoTIFF[i])):
                 match = re.match(pattern, GeoTIFF[i][j])
-                # print(match)
-                # self.outname_tmp = "_".join(
-                #     [match.group("beam"),match.group("pols"),".SLC.par"]).replace("D","")
-                # print(self.outname_tmp)
                 suboutname_tmp1.append(("_".join(
                     [outname_base[i], match.group("beam"), match.group("pols"), ".mli"]).replace("_D", "")).replace(
                     "_.mli", ".ml.mli"))
                 suboutname_tmp2.append(("_".join(
                     [outname_base[i], match.group("beam"), match.group("pols"), ".mli"]).replace("_D", "")).replace(
-                    "_.mli", ".ml.mli_par"))
-            # print(self.suboutname_tmp)
+                    "_.mli", ".ml.mli.par"))
             outname_MLI.append(suboutname_tmp1)
             outname_MLI_par.append(suboutname_tmp2)
         for i in outname_MLI:
@@ -508,10 +495,7 @@ class GammaArgs:
                                  noise_XML[i][j],
                                  outname_MLI_par[i][j], outname_MLI[i][j],
                                  outname_GRD_par, outname_GRD, eflg, rps, noise_pwr])))
-                # tmp_args = (" ".join([gamma_com, GeoTIFF[i][j], annotation_XML[i][j],
-                #                 calibration_XML[i][j], noise_XML[i][j],
-                #                 outname_SLC_par[i][j], outname_SLC[i][j],
-                #                 outname_SLC_tops_par[i][j], dytpe, sc_dB])) # Potentielly add str(sys.executable), str(sys.argv[0]), at the beginning
+
                 tmp_args = (" ".join([gamma_com, "".join(["$(find . -iname ", GeoTIFF[i][j], ")"]),
                                  "".join(["$(find . -iname ", annotation_XML[i][j], ")"]),
                                  "".join(["$(find . -iname ", calibration_XML[i][j], ")"]),
@@ -521,15 +505,12 @@ class GammaArgs:
                                 outname_GRD_par, outname_GRD, eflg, rps, noise_pwr]))
 
                 args.append(tmp_args)
-                #print("XML_S1_TOPS" +" "+ self.GeoTIFF[i][j] +" "+ self.annotation_XML[i][j] )
-                #run(["XML_S1_TOPS", self.GeoTIFF[i][j]])
+
 
         # Create list for Copy Args
         copy_args = list()
         print(copy_args)
 
-        #TODO: COPY ORDNER Funktioniert noch nicht
-        # Zuhause testen
         for i in range(len(outname_base)):
             print("Hallo")
             print((" ".join(["mkdir", outname_base[i],
@@ -557,10 +538,7 @@ class GammaArgs:
         return my_tuple
 
 if __name__ == '__main__':
-    t = Args()
+    t = GammaArgs()
     print(t)
     t.create_args_par_S1_SLC()
-
-
-
-""
+    t.create_args_par_S1_GRD()
