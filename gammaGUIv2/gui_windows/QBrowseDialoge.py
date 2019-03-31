@@ -6,6 +6,7 @@ class BrowseDialoge(QtWidgets.QFileDialog):
     This is the Class for the Browse Dialog.
     It should contain all Methods to open a FileDialoge to extract Folder path or Filepath
     Currently it contains only Methods to extract a Folder Path
+    Original Code by Felix, implementation by Stefan
     """
 
     def __init__(self):
