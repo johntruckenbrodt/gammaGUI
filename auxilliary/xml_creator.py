@@ -2,6 +2,7 @@
 # Usage: Write XML of all GAMMA Main Commands
 #############################################
 import os
+import glob
 import xml.etree.cElementTree as ET
 from xml.dom import minidom
 from auxilliary.read_env import ReadEnv

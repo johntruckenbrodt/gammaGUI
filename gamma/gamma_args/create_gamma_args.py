@@ -314,9 +314,6 @@ class GammaArgs:
             copy_args.append(copy_args_tmp)
 
 
-        print("Print jetzt die ArgumenteListe zum Kopieren der SLO Daten")
-        for i in copy_args:
-            print(i)
         print("Creating Tuple and Returning it to the API File: par_S1_SLC.py")
         my_tuple = tuple((args, copy_args))
 

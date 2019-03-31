@@ -5,6 +5,7 @@
 # from auxilliary.read_env import ReadEnv
 # from auxilliary.create_args import Args
 from gamma.gamma_args.create_gamma_args import GammaArgs
+from auxilliary.xml_creator import XMLCreaterGAMMA
 # import argparse
 # import sys
 import subprocess as sp
@@ -53,6 +54,10 @@ class ParS1SLC():
             print(my_args)
             #sp.run(parser.parse_args(my_args))
             sp.Popen(my_args, shell=True)
+
+        #TODO Added by Felix, not tested
+        xml = XMLCreaterGAMMA()
+        xml.create_XML_FROM_PAR_SLC_SLCTOPS()
 
         print("------- Create Folders (Basename) and copy specific slc Files tops. par ------")
         for i in range(0, len(my_args_list[1])):
