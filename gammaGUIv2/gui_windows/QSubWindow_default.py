@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+# Author: Stefan Werner
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_QSubWindow_default(object):

@@ -4,6 +4,8 @@ import os
 import re
 from auxilliary.xml_creator import XMLCreaterGAMMA
 import sys
+# Author: Stefan Werner
+# Implementation create_args_par_S1_GRD Felix Behrendt
 
 class GammaArgs:
     """

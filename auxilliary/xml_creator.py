@@ -1,6 +1,5 @@
-# This Shoud be a xml_creater File
-# Usage: Write XML of all GAMMA Main Commands
-#############################################
+# Author: Stefan Werner
+# create_XML_FROM_PAR_SLC_SLCTOPS : Core Code Stefan Werner / Implementation Felix Behrendt
 import os
 import glob
 import xml.etree.cElementTree as ET

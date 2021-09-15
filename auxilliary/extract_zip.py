@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# Author: Stefan Werner
 from auxilliary.read_env import ReadEnv
 import os
 import zipfile

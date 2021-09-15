@@ -5,6 +5,7 @@
 # Created by: PyQt5 UI code generator 5.11.3
 #
 # WARNING! All changes made in this file will be lost!
+#Author: Core Code Stefan Werner, implemenation Felix Behrendt
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from gammaGUIv2.gui_windows.QBrowseDialoge import *

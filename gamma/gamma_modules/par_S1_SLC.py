@@ -4,6 +4,7 @@
 # import re
 # from auxilliary.read_env import ReadEnv
 # from auxilliary.create_args import Args
+# Author: Stefan Werner
 from gamma.gamma_args.create_gamma_args import GammaArgs
 from auxilliary.xml_creator import XMLCreaterGAMMA
 # import argparse

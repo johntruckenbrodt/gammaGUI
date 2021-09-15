@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# Author: Stefan Werner
 from PyQt5 import QtCore, QtGui, QtWidgets
 from auxilliary.environment import Environment
 from gammaGUIv2.gui_windows.QBrowseDialoge import BrowseDialoge

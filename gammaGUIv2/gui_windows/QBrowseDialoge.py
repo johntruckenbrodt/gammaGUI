@@ -1,3 +1,4 @@
+# Author: core code Felix Behrendt, implementation Stefan Werner
 from PyQt5 import QtWidgets
 from auxilliary.environment import Environment
 

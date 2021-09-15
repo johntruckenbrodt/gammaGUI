@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# Author: Stefan Werner
 
 """
 Python 2.7.15 |Anaconda, Inc.| (default, May  1 2018, 18:37:09) [MSC v.1500 64 bit (AMD64)]

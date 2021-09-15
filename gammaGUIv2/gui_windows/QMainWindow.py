@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# Autor: Stefan Werner/ Felix Behrendt
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from auxilliary.environment import Environment

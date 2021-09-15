@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# Author: Stefan Werner
 import os
 import xml.etree.cElementTree as ET
 from xml.dom import minidom

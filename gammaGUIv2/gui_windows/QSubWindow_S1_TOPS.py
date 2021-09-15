@@ -1,11 +1,5 @@
 # -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'D:\gammaGUIv2\gammaGUIv2\Qt_Export\QSubWindow_S1_TOPS.ui'
-#
-# Created by: PyQt5 UI code generator 5.11.3
-#
-# WARNING! All changes made in this file will be lost!
-
+# Author: Stefan Werner
 from PyQt5 import QtCore, QtGui, QtWidgets
 from gammaGUIv2.gui_windows.QBrowseDialoge import *
 #from gamma.gamma_modules.S1_TOPS import S1TOPS

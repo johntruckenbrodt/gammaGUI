@@ -1,3 +1,4 @@
+# Author: Stefan Werner
 import xml.etree.cElementTree as ET
 from auxilliary.environment import Environment
 

@@ -12,6 +12,7 @@ from gamma.gamma_args.create_gamma_args import GammaArgs
 # import argparse
 # import sys
 import subprocess as sp
+# Author: Core Code Stefan Werner / Implementation Felix Behrendt
 
 
 class ParS1GRD():

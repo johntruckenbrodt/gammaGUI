@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# Author: Stefan Werner
 from PyQt5 import QtCore, QtGui, QtWidgets
 from gammaGUIv2.gui_windows.QBrowseDialoge import *
 from auxilliary.extract_zip import ZippedFiles
@@ -260,7 +261,8 @@ class Ui_QSubWindow_data_extraction(object):
 
     def create_Ui_QSubWindow_data_extraction(self):
         """
-        This is the Method to Open the QSubWindow from the QMainWindow. This has to called from there.
+        This is the Method to Open the QSubWindow from the QMainWindow.
+        This has to be called from the QMainWindow.
         :return:
         """
         QSubWindow_data_extraction = QtWidgets.QDialog()
